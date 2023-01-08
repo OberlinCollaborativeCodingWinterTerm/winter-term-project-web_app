@@ -1,0 +1,47 @@
+.createpost{
+    height: 100vh;
+    background-color: gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .card{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        border-radius: 10px;
+        .header{
+            background-color: white;
+            padding-left: 50px;
+        }
+        .post{
+            flex: 1;
+            background-color: white;
+            padding-left: 50px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            .title{}
+            .description{
+                input{
+                    min-width: 600px;
+                    min-height: 250px;
+                    align-content: flex-start;
+                }
+            }
+            .toolbar{}
+        }
+        .comments{
+            flex: 1;
+            background-color: white;
+            padding-left: 50px;
+            padding-top: 10px;
+            padding-bottom: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            color: black;
+        }
+    }
+}
