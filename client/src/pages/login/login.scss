@@ -4,48 +4,52 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
-.card{
-    width: 50%;
-    display: flex;
-    background-color: white;
-    border-radius: 10px;
-    min-height: 600px;
-}
+    .card{
+        width: 50%;
+        display: flex;
+        background-color: white;
+        border-radius: 10px;
+        min-height: 600px;
 
-.left{
-    flex: 1;
-    background-color: black;
-    padding: 50px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    color: white;
-    
-
-    h1{
-        font-size: 100px;
-        line-height: 100px;
-    }
-    p{}
-    span{}
-    button{}
-}
-
-.right{
-    flex: 1;
-    padding: 50px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    h1{}
-    form{
-        
-        input{
+        .left{
+            flex: 1;
+            background-color: black;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            color: white;
             
+        
+            h1{
+                font-size: 100px;
+                line-height: 100px;
+            }
+            p{}
+            span{}
+            button{}
         }
-        button{}
+        
+        .right{
+            flex: 1;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            h1{}
+            form{
+                
+                input{
+                    
+                }
+                button{}
+            }
+        }
+
     }
 }
+
+
+
 
 
