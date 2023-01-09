@@ -1,4 +1,4 @@
-import './register.css';
+import './register.scss';
 
 const Register = () => {
     return (
@@ -13,7 +13,8 @@ const Register = () => {
                         <input type="text" placeholder="username"/>
                         <input type="email" placeholder="email"/>
                         <input type="password" placeholder="password"/>
-                        <input type="name" placeholder="name"/>
+                        <input type="name" placeholder="first name"/>
+                        <input type="name" placeholder="last name"/>
                         <button>Create Account</button>
                     </form>
                 </div>
