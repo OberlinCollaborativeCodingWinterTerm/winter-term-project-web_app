@@ -10,13 +10,13 @@ class Filter_sidebar extends React.Component {
     }
 
     changeExpansion() {
-        this.setState({ isExpanded: False });
+        this.setState({ isExpanded: false });
     }
 
     render() {
         return (
-            <div className="filter_sidebar" style={{ width: isExpanded === true ? 200 : 50 }}>
-                    <button onClick={() => changeExpansion()}></button>
+            <div className="filter_sidebar" style={{ width: this.isExpanded === true ? 200 : 50 }}>
+                    <button onClick={() => this.changeExpansion()}></button>
             </div>
         )
     }
