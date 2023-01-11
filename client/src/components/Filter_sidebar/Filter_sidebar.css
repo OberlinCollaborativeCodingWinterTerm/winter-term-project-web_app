@@ -1,3 +1,14 @@
 .filter_sidebar {
-    background-color: black;
+    background-color: #EFF2F1;
+    width: 20%;
+}
+
+.filter_sidebar_classes {
+    width: 80%;
+    margin: auto;
+}
+
+.filter_sidebar_date {
+    width: 80%;
+    margin: auto;
 }
