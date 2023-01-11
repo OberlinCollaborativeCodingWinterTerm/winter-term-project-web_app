@@ -1,12 +1,7 @@
 //import logo from './logo.svg';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
-import Home from './pages/home/Home';
-import Profile from './pages/profile/Profile';
-import {Outlet, Route, Routes} from "react-router-dom";
-import Filter_sidebar from './components/Filter_sidebar/Filter_sidebar';
-import Sidebar from './components/sidebar/Sidebar';
-
+import {Route, Routes} from "react-router-dom";
 //import './App.css';
 
 function App() {
@@ -28,20 +23,19 @@ function App() {
   return (
     <div className="App">
       <Routes>
-          <Route 
-            path={"/"} 
-            element={<Layout />} 
-            children={[
-              <Route path="/" element={<Home />}/>,
-              <Route path="/profile/:id" element={<Profile />}/>
-            ]}
-              />
-          <Route path={"/login"} exact element={<Login />} />
+          <Route path={"/login"} element={<Login />} />
           <Route path={"/register"} element={<Register />} />
       </Routes>
     </div>
   );
 }
+
+const HeaderContainer = () => (
+    <>
+        <Header />
+        <Outlet />
+    </>
+)
 
 export default App;
 // hello
