@@ -13,7 +13,6 @@ class Filter_sidebar extends React.Component {
 
     state = {
         isexpanded: false,
-        selectedValues: []
     }
 
     class_filters = ['ECON 101', 'CSCI 150', 'WCRM 103', 'BIOL 100', 'STAT 113']
@@ -43,7 +42,6 @@ class Filter_sidebar extends React.Component {
                         className="filter_sidebar_classes"
                         isObject={false}
                         options={this.class_filters}
-                        //selectedValues={this.state.selectedValues} // Preselected value to persist in dropdown
                         onSelect={(all_items, new_item) => (console.log("Selected new class " + new_item))} // Function will trigger on select event
                         onRemove={(all_items, del_item) => (console.log("Deselected class " + del_item))} // Function will trigger on remove event
                         placeholder="Choose classes to filter"
@@ -58,7 +56,6 @@ class Filter_sidebar extends React.Component {
                         className="filter_sidebar_date"
                         isObject={false}
                         options={this.date_specifiers}
-                        //selectedValues={this.state.selectedValues} // Preselected value to persist in dropdown
                         onSelect={(all_items, new_item) => (console.log("Selected new date specifier " + new_item))} // Function will trigger on select event
                         onRemove={(all_items, del_item) => (console.log("Deselected date specifier " + del_item))} // Function will trigger on remove event
                         placeholder="Choose classes to filter"
