@@ -2,10 +2,10 @@
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
 import {Outlet, Route, Routes} from "react-router-dom";
-import {Header} from "./components/header/Header";
+import Header from "./components/header/Header";
 import './App.scss';
 import ViewPost from "./pages/viewpost/ViewPost";
-import Filter_sidebar from './components/filter_sidebar/Filter_sidebar';
+import Filter_sidebar from './components/Filter_sidebar/Filter_sidebar';
 
 function App() {
   return (
