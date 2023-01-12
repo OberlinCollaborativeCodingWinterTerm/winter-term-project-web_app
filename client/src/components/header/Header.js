@@ -6,7 +6,7 @@ import {LinkContainer} from "react-router-bootstrap";
 export default class Header extends React.Component {
     render() {
         return (
-            <Navbar>
+            <Navbar bg="white" className="shadow-sm">
                 <LinkContainer to="/">
                     <Navbar.Brand className="ms-2 px-1">StudyBuddies</Navbar.Brand>
                 </LinkContainer>
