@@ -38,9 +38,9 @@ const Posts = () => {
 
     return (
         <div className="posts">
-            {posts.map(post=>(
+            {/*posts.map(post=>(
                 <Post post={post} key={post.id} />
-            ))}
+            ))*/}
         </div>
     )
     

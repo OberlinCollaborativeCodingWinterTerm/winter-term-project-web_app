@@ -18,21 +18,6 @@ import Calendar from './pages/calendar/calendar';
 
 function App() {
 
-  const Layout = ()=> {
-    return (
-      <div>
-        <HeaderContainer />
-        <FilterSidebar />
-        <div style={{display:"flex"}}> 
-          <Sidebar />
-          <Outlet />
-
-        </div>
-      </div>
-    )
-  }
-
-
   return (
     <div className="App">
         <Routes>
