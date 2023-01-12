@@ -1,17 +1,26 @@
 //import logo from './logo.svg';
+import './App.scss';
+import {Outlet, Route, Routes} from "react-router-dom";
+
+// component imports
+import Filter_sidebar from './components/filter_sidebar/Filter_sidebar';
+import Sidebar from './components/sidebar/Sidebar';
+import {Header} from "./components/header/Header";
+import Posts from './components/posts/Posts';
+
+// page imports 
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
-import {Outlet, Route, Routes} from "react-router-dom";
-import {Header} from "./components/header/Header";
-import './App.scss';
 import ViewPost from "./pages/viewpost/ViewPost";
-import Filter_sidebar from './components/filter_sidebar/Filter_sidebar';
+import Courses from './pages/courses/Courses';
+import Calendar from './pages/calendar/calendar';
 
 function App() {
 
   const Layout = ()=> {
     return (
       <div>
+        <HeaderContainer />
         <Filter_sidebar />
         <div style={{display:"flex"}}> 
           <Sidebar />
@@ -28,11 +37,14 @@ function App() {
         <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/" element={<HeaderContainer />}>
-                <Route path="" element={<></>} />
+            <Route path="/" element={<HeaderContainer/>}>
+                <Route path="" element={<Posts/>} />
                 {/* put routes for other pages under here */}
                 <Route path="filters" element={<Filter_sidebar />} />
                 <Route path="viewpost" element={<ViewPost />} />
+                <Route path='courses' element={<Courses />} />
+                <Route path='calendar' element={<Calendar />} />
+                
             </Route>
         </Routes>
     </div>
