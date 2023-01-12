@@ -3,7 +3,8 @@ import './App.scss';
 import {Outlet, Route, Routes} from "react-router-dom";
 
 // component imports
-import Filter_sidebar from './components/filter_sidebar/Filter_sidebar';
+//import Filter_sidebar from './components/filter_sidebar/Filter_sidebar';
+import FilterSidebar from './components/filtersidebar/FilterSidebar';
 import Sidebar from './components/sidebar/Sidebar';
 import Header from "./components/header/Header";
 import Posts from './components/posts/Posts';
@@ -21,7 +22,7 @@ function App() {
     return (
       <div>
         <HeaderContainer />
-        <Filter_sidebar />
+        <FilterSidebar />
         <div style={{display:"flex"}}> 
           <Sidebar />
           <Outlet />
@@ -40,7 +41,7 @@ function App() {
             <Route path="/" element={<HeaderContainer />}>
                 <Route path="" element={<Posts />} />
                 {/* put routes for other pages under here */}
-                <Route path="filters" element={<Filter_sidebar />} />
+                <Route path="filters" element={<FilterSidebar />} />
                 <Route path="viewpost" element={<ViewPost />} />
                 <Route path='courses' element={<Courses />} />
                 <Route path='calendar' element={<Calendar />} />

@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Multiselect from 'multiselect-react-dropdown';
 
-import './Filter_sidebar.css'
+import './FilterSidebar.css'
 
 
-class Filter_sidebar extends React.Component {
+class FilterSidebar extends React.Component {
     constructor() {
         super();
         this.multiselect_classes_ref = React.createRef();
@@ -71,4 +71,4 @@ class Filter_sidebar extends React.Component {
     }
 }
 
-export default Filter_sidebar
+export default FilterSidebar
