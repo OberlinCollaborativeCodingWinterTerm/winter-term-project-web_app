@@ -5,7 +5,7 @@ import {Outlet, Route, Routes} from "react-router-dom";
 import Header from "./components/header/Header";
 import './App.scss';
 import ViewPost from "./pages/viewpost/ViewPost";
-import Filter_sidebar from './components/Filter_sidebar/Filter_sidebar';
+import FilterSidebar from './components/filtersidebar/FilterSidebar';
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
             <Route path="/" element={<HeaderContainer />}>
                 <Route path="" element={<></>} />
                 {/* put routes for other pages under here */}
-                <Route path="filters" element={<Filter_sidebar />} />
+                <Route path="filters" element={<FilterSidebar />} />
                 <Route path="viewpost" element={<ViewPost />} />
             </Route>
         </Routes>
