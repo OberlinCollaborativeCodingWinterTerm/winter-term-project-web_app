@@ -16,7 +16,7 @@ export class Header extends React.Component {
                         <LinkContainer to="/">
                             <Nav.Link>Home</Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to="/classes">
+                        <LinkContainer to="/courses">
                             <Nav.Link>Classes</Nav.Link>
                         </LinkContainer>
                     </Nav>
@@ -32,3 +32,5 @@ export class Header extends React.Component {
         );
     }
 }
+
+export default Header;
