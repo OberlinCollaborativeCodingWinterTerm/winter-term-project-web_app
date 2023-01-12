@@ -3,12 +3,12 @@ import "./Header.scss";
 import {Navbar, Nav, NavDropdown} from "react-bootstrap";
 import {LinkContainer} from "react-router-bootstrap";
 
-export class Header extends React.Component {
+export default class Header extends React.Component {
     render() {
         return (
             <Navbar>
                 <LinkContainer to="/">
-                    <Navbar.Brand>StudyBuddies</Navbar.Brand>
+                    <Navbar.Brand className="ms-2 px-1">StudyBuddies</Navbar.Brand>
                 </LinkContainer>
                 <Navbar.Toggle />
                 <Navbar.Collapse>
