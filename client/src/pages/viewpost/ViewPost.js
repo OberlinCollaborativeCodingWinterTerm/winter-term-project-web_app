@@ -3,7 +3,11 @@ import AnnouncementPost from "../../components/post/types/AnnouncementPost";
 
 const ViewPost = () => {
     return (
-        <AnnouncementPost userIcon="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" classId="CSCI-151" title="Sample Title" description="Sample description text."
+        <AnnouncementPost 
+        userIcon="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" 
+        classId="CSCI-151" 
+        title="Sample Title" 
+        description="Sample description text."
         tags={["tag1", "tag2"]} />
     );/*(
         <div className="viewpost">
