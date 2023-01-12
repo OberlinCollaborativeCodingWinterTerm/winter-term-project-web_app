@@ -1,0 +1,26 @@
+
+  .Options_sidebar{
+    height: 100%;
+    width: 250px;
+    background-color: #2a3042;
+    top: 0;
+  }
+  .Options_sidebarList{
+    height: auto;
+    padding:0;
+    width: 100%; 
+  }
+
+  .SidebarList .row{
+    width: 100%; 
+    height: 50px;
+    list-style-type: none; 
+    /* all list items the same */
+    margin: 0; 
+    display: flex; 
+    flex-direction: row; 
+    /* icons and text in the row */
+    align-items: center;
+    justify-content: center;
+    color: blue;
+  }
