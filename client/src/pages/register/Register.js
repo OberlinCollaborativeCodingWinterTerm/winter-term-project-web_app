@@ -1,4 +1,6 @@
 import './register.scss';
+import { Link } from "react-router-dom";
+
 
 const Register = () => {
     return (
@@ -17,6 +19,9 @@ const Register = () => {
                         <input type="name" placeholder="last name"/>
                         <button>Create Account</button>
                     </form>
+                    <Link to="/login">
+                        Already have an account?
+                    </Link>
                 </div>
             </div>
 

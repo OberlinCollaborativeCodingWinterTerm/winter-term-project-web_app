@@ -1,6 +1,12 @@
 import './login.scss';
 
-const Login = () => {
+import { Link } from "react-router-dom";
+
+function Login() {
+    //const history = useHistory();
+
+    //const registerPage = () => { history.push("/register") }
+
     return (
         <div className="login">
             <div className="card">
@@ -11,7 +17,10 @@ const Login = () => {
                     </p>
                     
                     <span>Don't have an account?</span>
-                    <button>Register</button>
+
+                    <Link to="/register">
+                        <button>Register</button>
+                    </Link>
 
                 </div>
                 <div className="right">
