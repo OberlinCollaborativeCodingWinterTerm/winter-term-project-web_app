@@ -15,6 +15,7 @@ import Register from './pages/register/Register';
 import ViewPost from "./pages/viewpost/ViewPost";
 import Courses from './pages/courses/Courses';
 import Calendar from './pages/calendar/calendar';
+import Home from './pages/home/Home';
 
 function App() {
 
@@ -24,7 +25,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/" element={<HeaderContainer />}>
-                <Route path="" element={<Posts />} />
+                <Route path="" element={<Home />} />
                 {/* put routes for other pages under here */}
                 <Route path="filters" element={<FilterSidebar />} />
                 <Route path="viewpost" element={<ViewPost />} />

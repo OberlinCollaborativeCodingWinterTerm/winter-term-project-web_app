@@ -1,4 +1,6 @@
 import React from 'react';
+import "./home.scss";
+
 import {Options_sidebar} from "../../components/optionssidebar/Options_sidebar";
 
 const Home = () => {
