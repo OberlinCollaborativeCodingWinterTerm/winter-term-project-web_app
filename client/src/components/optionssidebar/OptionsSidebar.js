@@ -1,10 +1,10 @@
 import React from "react";
-import "./Options_sidebar.css";
-import { SidebarData } from "./Options_sidebarData";
+import "./OptionsSidebar.css";
+import { SidebarData } from "./OptionsSidebarData";
 
 
 
-export class Options_sidebar extends React.Component {
+export class OptionsSidebar extends React.Component {
   render(){
     return (
       <div className="Options_sidebar">

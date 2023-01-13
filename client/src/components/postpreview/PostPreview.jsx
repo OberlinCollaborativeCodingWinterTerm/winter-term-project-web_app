@@ -77,7 +77,7 @@ export default class PostPreview extends React.Component {
     }
     render() {
         return (
-            <Container className="container-md bg-white mt-5 p-4">
+            <Container className="container-md bg-white p-4">
                 <p className="mb-1 text-secondary"><small><img alt="" src={this.props.userIcon} style={{ width: '1.5em', height: '1.5em' }} className="rounded-circle"  /> <span className="px-1">username</span><Badge pill bg="primary">STUDENT</Badge>
                     <span className="px-1">&middot; posted in <Link to={"/classes/" + this.props.classId}>{this.props.classId}</Link></span></small></p>
                 <h2>{this.props.title} <Badge pill bg="success">OPEN</Badge></h2>
