@@ -1,14 +1,19 @@
 
-  .Options_sidebar{
+  .Options_sidebar {
     height: 100%;
     width: 250px;
-    background-color: #2a3042;
+    background-color: rgb(208, 202, 202);
+    border-color: black;
+    border-radius: 5%;
     top: 0;
+    margin-left: 4px;
   }
+
   .Options_sidebarList{
     height: auto;
-    padding:0;
+    padding: 6px;
     width: 100%; 
+   
   }
 
   .SidebarList .row{
@@ -19,6 +24,7 @@
     margin: 0; 
     display: flex; 
     flex-direction: row; 
+    
     /* icons and text in the row */
     align-items: center;
     justify-content: center;
