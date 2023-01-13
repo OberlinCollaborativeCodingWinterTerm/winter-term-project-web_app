@@ -1,3 +1,7 @@
 $body-bg: #f7f7f7;
 
 @import "~bootstrap/scss/bootstrap";
+
+#app-content {
+  max-height: calc(100% - 64px); /* make this more consistent later? */
+}

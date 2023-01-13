@@ -5,9 +5,7 @@ import {Outlet, Route, Routes} from "react-router-dom";
 // component imports
 //import Filter_sidebar from './components/filter_sidebar/Filter_sidebar';
 import FilterSidebar from './components/filtersidebar/FilterSidebar';
-import Sidebar from './components/sidebar/Sidebar';
 import Header from "./components/header/Header";
-import Posts from './components/posts/Posts';
 
 // page imports 
 import Login from './pages/login/Login';
@@ -40,8 +38,12 @@ function App() {
 
 const HeaderContainer = () => (
     <>
-        <Header />
-        <Outlet />
+        <div id="header-manager" className="d-flex flex-column vh-100">
+            <Header />
+            <div id="app-content" className="h-100">
+                <Outlet />
+            </div>
+        </div>
     </>
 )
 
