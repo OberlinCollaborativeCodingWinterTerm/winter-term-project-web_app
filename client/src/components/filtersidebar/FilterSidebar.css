@@ -1,14 +1,25 @@
-.filter_sidebar {
+.filtersidebar {
     background-color: #EFF2F1;
-    width: 20%;
+    padding: 2%;
+    width: 280px;
 }
 
-.filter_sidebar_classes {
+.filtersidebarcategory {
     width: 80%;
     margin: auto;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
 }
 
-.filter_sidebar_date {
-    width: 80%;
+.filterheadings{
+    text-align: center;
+}
+
+.filterbuttonsrow{
     margin: auto;
+    padding-top: 10px;
+    display:flex;
+    flex-direction: row;
+    width: 95%;
 }
