@@ -1,32 +1,39 @@
-
   .Options_sidebar {
     height: 100%;
-    width: 250px;
-    background-color: rgb(208, 202, 202);
-    border-color: black;
-    border-radius: 5%;
-    top: 0;
-    margin-left: 4px;
+    width: 280px; 
+    background-color: #4059AD;
   }
 
   .Options_sidebarList{
-    height: auto;
-    padding: 6px;
-    width: 100%; 
-   
+    height: 100%;
+    padding: 1px;
+    width: 100%;  
   }
 
-  .SidebarList .row{
+  .Options_sidebarList .row{
     width: 100%; 
-    height: 50px;
+    height: 100%;
     list-style-type: none; 
-    /* all list items the same */
+    
+    border-radius: 2px;
+    padding: 15px;
     margin: 0; 
     display: flex; 
     flex-direction: row; 
-    
-    /* icons and text in the row */
+    color: white;
     align-items: center;
     justify-content: center;
-    color: blue;
+    color: white;
+  }
+
+  .Options_sidebarList .row:hover{
+    cursor: pointer;
+    background-color: #4C67BD;
+  }
+
+  .row #icon{
+    flex: 30%;
+  }
+  .row #title{
+    flex: 70%;
   }

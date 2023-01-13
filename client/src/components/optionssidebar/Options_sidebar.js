@@ -3,7 +3,6 @@ import "./Options_sidebar.css";
 import { SidebarData } from "./Options_sidebarData";
 
 
-// TODO: Add the icons to <div>{val.icon} through Material Icon latter
 
 export class Options_sidebar extends React.Component {
   render(){
@@ -13,8 +12,8 @@ export class Options_sidebar extends React.Component {
         {SidebarData.map((val, key)=>{
         return (
           <li className="row" key={key} onClick={()=> {window.location.pathname=val.link}}>
-          <div>{val.icon}</div>{" "} 
-          <div>{val.title}</div>{" "}
+          <div id="icon">{val.icon}</div>{" "} 
+          <div id="title">{val.title}</div>{" "}
           </li>
           );
         })}
