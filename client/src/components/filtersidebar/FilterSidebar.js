@@ -38,7 +38,7 @@ class FilterSidebar extends React.Component {
     }
     render() {
         return (
-            <Col className="filtersidebar">
+            <Col className="filtersidebar pt-3">
                 <Row>
                     <h4 className="filterheadings">Class Filters</h4>
                 </Row>
