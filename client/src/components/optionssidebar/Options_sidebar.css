@@ -1,7 +1,7 @@
   .Options_sidebar {
     height: 100%;
     width: 280px; 
-    background-color: #4059AD;
+    background-color: #335FFF;
   }
 
   .Options_sidebarList{
@@ -28,7 +28,7 @@
 
   .Options_sidebarList .row:hover{
     cursor: pointer;
-    background-color: #4C67BD;
+    background-color: #476FFF;
   }
 
   .row #icon{
