@@ -1,5 +1,18 @@
+import { Container } from 'react-bootstrap';
 import Post from '../post/Post';
+import AnnouncementPostPreview from '../postpreview/types/AnnouncementPreviewPost';
 import './posts.scss';
+
+/*
+<AnnouncementPreviewPost
+                    userIcon="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
+                    userName="Bob Geitz"
+                    classId="CSCI-151"
+                    title="Sample Title"
+                    description="Sample description text."
+                    tags={["tag1", "tag2"]} />
+
+*/
 
 const Posts = () => {
     // temporary array of "posts"
@@ -38,9 +51,18 @@ const Posts = () => {
 
     return (
         <div className="posts">
-            {/*posts.map(post=>(
-                <Post post={post} key={post.id} />
-            ))*/}
+            {posts.map(post=>(
+                <Container className="pt-5" style={{ maxWidth: 750 }}>
+                    <AnnouncementPostPreview post={post} key={post.id} 
+                        userIcon="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
+                        userName={post.userName}
+                        classId={post.course}
+                        title="Sample Title"
+                        description={post.desc}
+                        tags={["tag1", "tag2"]}/>
+                </Container>
+                
+            ))}
         </div>
     )
     

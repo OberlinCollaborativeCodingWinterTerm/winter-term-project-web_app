@@ -1,6 +1,10 @@
 import React from 'react';
 import './courses.scss'
 import Course from '../../components/course/Course';
+import Sidebar from '../../components/sidebar/Sidebar';
+import { Container } from 'react-bootstrap';
+import {Container as FABContainer, Button as FABButton, darkColors, lightColors } from "react-floating-action-button";
+import {FaPlus} from "react-icons/fa";
 
 const Courses = () => {
 
@@ -50,10 +54,20 @@ const Courses = () => {
 
     return (
         <div className='courses'>
-            {courses.map(course=>(
-                <Course course={course} key={course.id}/>
-            ))}
+            <Container className="p-0">
+                {courses.map(course=>(
+                        <Course course={course} key={course.id}/>
+                    ))}
+            </Container>
+            <FABContainer>
+                <FABButton
+                tooltip="Add new course"
+                styles={{backgroundColor: darkColors.lighterRed, color: lightColors.white}}
+                icon="fas fa-plus"
+                />
 
+            </FABContainer>
+            
         </div>
     )
 }
