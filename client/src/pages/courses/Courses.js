@@ -63,8 +63,9 @@ const Courses = () => {
                 <FABButton
                 tooltip="Add new course"
                 styles={{backgroundColor: darkColors.lighterRed, color: lightColors.white}}
-                icon="fas fa-plus"
-                />
+                onClick={() => alert('test alert')}>
+                    <FaPlus/> 
+                </FABButton>
 
             </FABContainer>
             
