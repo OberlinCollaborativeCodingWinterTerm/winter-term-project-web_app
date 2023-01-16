@@ -4,6 +4,7 @@ import AnnouncementPreviewPost from '../../components/postpreview/types/Announce
 import Sidebar from "../../components/sidebar/Sidebar";
 import {Col, Container} from "react-bootstrap";
 import Posts from '../../components/posts/Posts';
+import FAButton from '../../components/fabutton/FAButton';
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
                     </Col>
                     <Col className="hidden-scroll">
                         <Posts />
+                        <FAButton tooltip="New Post"/>
                     </Col>
                 </div>
             </Container>
