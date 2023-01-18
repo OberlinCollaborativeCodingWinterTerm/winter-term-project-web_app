@@ -1,6 +1,6 @@
 import "./Post.scss";
 import React from "react";
-import {Badge, Container} from "react-bootstrap";
+import {Badge, Button, Container} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {AiFillQuestionCircle} from "react-icons/ai";
 
@@ -48,7 +48,7 @@ export default class Post extends React.Component {
                     </span>
                     <p className={this.state.preview ? "text-secondary" : "text-body"}>{this.props.description}</p>
                     <this.postContent {...this.props} />
-                    <div className="d-flex justify-content-md-end">{this.props.tags.map((tag) => <Badge className="mx-1" key={tag} pill bg="secondary">{tag}</Badge>)}</div>
+                    <div className="d-flex justify-content-md-end">{this.props.tags.map((tag) => <Link to="" key={tag}><Button style={{paddingRight: "0.75em", paddingLeft: "0.75em"}} className="mx-1 badge rounded-pill" variant="secondary">{tag}</Button></Link>)}</div>
                     {/* user, title, description, tags, like button is universal */
                      /* post content is what differentiates different types of posts */
                      /* feedback content is what is under the post, being comments, answers, group chat, etc. */}
