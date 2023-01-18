@@ -1,8 +1,7 @@
 import React from 'react';
 import './courses.scss'
 import Course from '../../components/course/Course';
-import Sidebar from '../../components/sidebar/Sidebar';
-import { Container } from 'react-bootstrap';
+import {Container, Row} from 'react-bootstrap';
 import FAButton from '../../components/fabutton/FAButton';
 
 const Courses = () => {
@@ -53,9 +52,11 @@ const Courses = () => {
 
     return (
         <div className='courses'>
-            <Container className="p-0">
+            <Container className="p-0 mt-5">
+                <Row className="row-cols-sm-1 gap-4" style={{ columnGap: 0 }}>
                 {courses.map(course=>(
                     <Course course={course} key={course.id}/>                    ))}
+                </Row>
             </Container>
             <FAButton tooltip="Add new course"/>
             

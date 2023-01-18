@@ -1,29 +1,29 @@
 import React from "react";
 import './course.scss';
-import { Card, Container, Row, Col, Nav } from "react-bootstrap";
+import { Card, Container, Row, Col} from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import {FaGraduationCap, FaUser, FaComments} from "react-icons/fa";
 
 const Course = ({course}) => {
     return (
-        <div className="course">
+        <div className="course col col-4 flex-md-grow-0 flex-grow-1" style={{flexBasis: 300}}>
             <div className="container" >
                 <LinkContainer to={"/courses/"+course.department+course.courseId}>
-                    <Card style={{ width: '16rem'}}>
+                    <Card className="border-0 shadow-sm">
                         <Card.Header className="text-bg-primary p-3">
                             <Card.Title>{course.name}</Card.Title>
                             <Card.Subtitle>{course.department}{course.courseId}</Card.Subtitle>
                         </Card.Header>
                         <Card.Body>
-                            <Container className="text-left">
-                                <Row>
-                                    <Col><FaGraduationCap/>  {course.instructors}</Col>
+                            <Container className="text-left text-secondary">
+                                <Row className="align-items-center">
+                                    <Col className="flex-grow-0 d-flex align-items-center pe-0"><FaGraduationCap/></Col><Col>{course.instructors}</Col>
                                 </Row>
                                 <Row>
-                                    <Col><FaUser/>  {course.studentCount} students</Col>
+                                    <Col className="flex-grow-0 d-flex align-items-center pe-0"><FaUser/></Col><Col>{course.studentCount} students</Col>
                                 </Row>
                                 <Row>
-                                    <Col><FaComments/>  {course.questions} unanswered questions</Col>
+                                    <Col className="flex-grow-0 d-flex align-items-center pe-0"><FaComments/></Col><Col>{course.questions} unanswered questions</Col>
                                 </Row>
                             </Container>
                              
