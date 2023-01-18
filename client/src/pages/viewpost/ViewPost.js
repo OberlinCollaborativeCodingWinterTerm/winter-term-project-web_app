@@ -1,14 +1,44 @@
 import './viewpost.scss';
-import AnnouncementPost from "../../components/post/types/AnnouncementPost";
+import StudyGroupPost from "../../components/post/types/StudyGroupPost";
 
 const ViewPost = () => {
     return (
-        <AnnouncementPost 
-        userIcon="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" 
-        classId="CSCI-151" 
-        title="Sample Title" 
-        description="Sample description text."
-        tags={["tag1", "tag2"]} />
+        <StudyGroupPost
+            user={{
+                icon: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
+                username: "username",
+                firstName: "First",
+                lastName: "Last",
+                flair: "student"
+            }}
+            classId="CSCI-151"
+            title="Announcement Title"
+            description="Announcement description text."
+            tags={["tag1", "tag2"]}
+            flair="open"
+            date="January 15, 2023"
+            location="King 101"
+            members={
+                [
+                    {
+                        icon: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
+                        username: "username",
+                        flair: "student"
+                    },
+                    {
+                        icon: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
+                        username: "username",
+                        flair: "student"
+                    },
+                    {
+                        icon: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
+                        username: "username",
+                        flair: "student"
+                    }
+                ]
+            }
+            limit={5}
+        />
     );/*(
         <div className="viewpost">
             <div className="card">
