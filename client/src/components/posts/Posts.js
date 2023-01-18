@@ -79,7 +79,7 @@ const Posts = () => {
                 {posts.map(post=>(
                     <AnnouncementPost
                         user={post.user}
-                        classId={post.course}
+                        course={post.course}
                         title={post.title}
                         description={post.desc}
                         tags={["tag1", "tag2"]}
