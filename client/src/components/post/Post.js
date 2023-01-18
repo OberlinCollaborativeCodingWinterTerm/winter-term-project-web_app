@@ -11,6 +11,8 @@ export default class Post extends React.Component {
             preview: !!(props.preview),
             ...defaultState
         };
+        this.postContent = this.postContent.bind(this);
+        this.feedbackContent = this.feedbackContent.bind(this);
     }
 
     postContent(props) {
