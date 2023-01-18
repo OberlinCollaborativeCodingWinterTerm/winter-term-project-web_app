@@ -41,7 +41,7 @@ export default class Post extends React.Component {
                 <Container className={this.state.preview ? "container-md bg-white my-4 p-4 shadow-sm rounded-4" : "container-md bg-white mt-5 p-4 shadow-sm rounded-4"}>
                     <p className="mb-1 text-secondary d-flex align-items-start">
                         <small className="me-auto d-flex align-items-center"><img alt="" src={this.props.user.icon} style={{ width: '1.5em', height: '1.5em' }} className="rounded-circle"  /> <span className="px-1"><Link to={`/users/${this.props.user.username}`} className="text-decoration-none link-secondary">{this.props.user.firstName + " " + this.props.user.lastName}</Link></span><Badge pill bg="student">{this.props.user.flair.toUpperCase()}</Badge>
-                        <span className="px-1">&middot; posted in <Link className="text-primary" to={"/classes/" + this.props.classId}>{this.props.classId}</Link></span></small>
+                        <span className="px-1">&middot; posted in <Link className="text-primary" to={"/courses/" + this.props.courseId}>{this.props.courseId}</Link></span></small>
                         <this.iconDisplay className="text-quaternary" size="2em" />
                     </p>
                     <span className={`pe-5 ${this.state.preview ? "h3" : "h2"}`}>

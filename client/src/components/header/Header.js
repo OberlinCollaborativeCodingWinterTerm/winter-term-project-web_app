@@ -17,7 +17,7 @@ export default class Header extends React.Component {
                             <Nav.Link>Home</Nav.Link>
                         </LinkContainer>
                         <LinkContainer to="/courses">
-                            <Nav.Link>Classes</Nav.Link>
+                            <Nav.Link>Courses</Nav.Link>
                         </LinkContainer>
                     </Nav>
                 </Navbar.Collapse>

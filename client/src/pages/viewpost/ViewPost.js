@@ -11,7 +11,7 @@ const ViewPost = () => {
                 lastName: "Last",
                 flair: "student"
             }}
-            classId="CSCI-151"
+            courseId="CSCI-151"
             title="Announcement Title"
             description="Announcement description text."
             tags={["tag1", "tag2"]}
