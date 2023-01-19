@@ -3,8 +3,7 @@ import './courses.scss'
 import Course from '../../components/course/Course';
 import Sidebar from '../../components/sidebar/Sidebar';
 import { Container } from 'react-bootstrap';
-import {Container as FABContainer, Button as FABButton, darkColors, lightColors } from "react-floating-action-button";
-import {FaPlus} from "react-icons/fa";
+import FAButton from '../../components/fabutton/FAButton';
 
 const Courses = () => {
 
@@ -56,18 +55,9 @@ const Courses = () => {
         <div className='courses'>
             <Container className="p-0">
                 {courses.map(course=>(
-                        <Course course={course} key={course.id}/>
-                    ))}
+                    <Course course={course} key={course.id}/>                    ))}
             </Container>
-            <FABContainer>
-                <FABButton
-                tooltip="Add new course"
-                styles={{backgroundColor: darkColors.lighterRed, color: lightColors.white}}
-                onClick={() => alert('test alert')}>
-                    <FaPlus/> 
-                </FABButton>
-
-            </FABContainer>
+            <FAButton tooltip="Add new course"/>
             
         </div>
     )

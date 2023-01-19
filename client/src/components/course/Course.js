@@ -1,16 +1,15 @@
 import React from "react";
 import './course.scss';
-import { Card, Container, Row, Col } from "react-bootstrap";
-//import { Link } from "react-router-dom";
+import { Card, Container, Row, Col, Nav } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 import {FaGraduationCap, FaUser, FaComments} from "react-icons/fa";
 
 const Course = ({course}) => {
     return (
         <div className="course">
             <div className="container" >
-                    <Card style={{ width: '16rem'}}
-                        onClick={()=>{window.location.pathname="/classes/:id"}}
-                    >
+                <LinkContainer to={"/courses/"+course.department+course.courseId}>
+                    <Card style={{ width: '16rem'}}>
                         <Card.Header className="text-bg-primary p-3">
                             <Card.Title>{course.name}</Card.Title>
                             <Card.Subtitle>{course.department}{course.courseId}</Card.Subtitle>
@@ -30,6 +29,8 @@ const Course = ({course}) => {
                              
                         </Card.Body>
                     </Card>
+                </LinkContainer>
+                    
             </div>
         </div>
         
