@@ -1,6 +1,26 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+
+$enable-negative-margins: true;
 $body-bg: #f7f7f7;
 
+$custom-colors: (
+        //"primary": #e61d0e,
+        /* Theme */
+        "tertiary": #93959b,
+        "quaternary": #bcc2c7,
+        /* Roles */
+        "student": #3874ff,
+        /* Status */
+        "open": #47c533,
+        "full": #efab50,
+        "resolved": #3fb1e8
+);
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
 @import "~bootstrap/scss/bootstrap";
+
 
 #app-content {
   max-height: calc(100% - 64px); /* make this more consistent later? */

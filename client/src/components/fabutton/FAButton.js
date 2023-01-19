@@ -10,7 +10,7 @@ export default class FAButton extends React.Component{
                 <FABButton
                     tooltip={this.props.tooltip}
                     styles={{backgroundColor: darkColors.lighterRed, color: lightColors.white}}
-                    onClick={() => alert('test alert')}>
+                    onClick={() => (this.props.handleclick())}>
                 <FaPlus/> 
                 </FABButton>
             </FABContainer>
