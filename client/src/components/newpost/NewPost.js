@@ -17,9 +17,17 @@ const NewPost = ({isShowing, handleclose}) => {
     })
     
     const handlesubmit = () => {
-        //gets data and closes the modal
+        //gets data as store in function state userinput
         console.log("Submitted new post!")
         console.log(userinput);
+
+        //resets user input state
+        setUserInput({
+            "title": "",
+            "type": 'question',
+            "content": "",
+        })
+        //closes the modal
         handleclose(false);
     }
 
@@ -83,7 +91,7 @@ const NewPost = ({isShowing, handleclose}) => {
                         </FloatingLabel>
                     </div>
                 </Row>
-                <Row className="newpostbutton">
+                <Row className="newpostbuttons">
                     <Modal.Footer>
                         <Button variant="outline-secondary" size="lg" type="button" onClick={() => (handleclose(false))}>Dismiss</Button>
                         <Button variant="primary" size="lg" type="submit" onClick={() => (handlesubmit())}>Post</Button>
