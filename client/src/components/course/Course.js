@@ -9,8 +9,8 @@ const Course = ({course}) => {
         <div className="course col col-4 flex-md-grow-0 flex-grow-1" style={{flexBasis: 300}}>
             <div className="container" >
                 <LinkContainer to={"/courses/"+course.department+course.courseId}>
-                    <Card className="border-0 shadow-sm">
-                        <Card.Header className="text-bg-primary p-3">
+                    <Card className="border-0 shadow-sm rounded-4">
+                        <Card.Header className="text-bg-primary p-3" style={{borderTopLeftRadius: "1em", borderTopRightRadius: "1em"}}>
                             <Card.Title>{course.name}</Card.Title>
                             <Card.Subtitle>{course.department}{course.courseId}</Card.Subtitle>
                         </Card.Header>
