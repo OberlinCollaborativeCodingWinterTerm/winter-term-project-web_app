@@ -15,6 +15,7 @@ import Courses from './pages/courses/Courses';
 //import Calendar from './components/calendar/calendar';
 import Home from './pages/home/Home';
 import MyAccount from './pages/myaccount/MyAccount';
+import CourseFeed from "./pages/coursefeed/CourseFeed";
 
 function App() {
 
@@ -30,7 +31,7 @@ function App() {
                 <Route path="filters" element={<FilterSidebar />} />
                 <Route path="viewpost" element={<ViewPost />} />
                 <Route path='courses' element={<Courses />} />
-                
+                <Route path="courses/:course" element={<CourseFeed />} />
             </Route>
         </Routes>
     </div>
