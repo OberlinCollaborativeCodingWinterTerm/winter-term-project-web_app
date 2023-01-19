@@ -1,0 +1,25 @@
+.newposttitle {
+    margin: auto;
+    padding: 15px;
+}
+
+.newposttypeselector {
+    width: 60%;
+    margin: auto;
+    margin-left: 3%;
+    align-items: left;
+    padding: 10px;
+    padding-top: 2px;;
+}
+
+.newpostcontent{
+    margin: auto;
+    padding: 15px;
+    padding-top: 1px;
+    display: flex;
+}
+
+.newpostbutton {
+    margin: auto;
+    padding: 5px;
+}
