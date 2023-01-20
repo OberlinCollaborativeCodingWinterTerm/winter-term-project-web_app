@@ -4,6 +4,7 @@ import {Badge, Button, Container} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {AiFillQuestionCircle} from "react-icons/ai";
 import {LinkContainer} from "react-router-bootstrap";
+import CommentSection from "../commentsection/CommentSection";
 
 export default class Post extends React.Component {
     constructor(props, defaultState) {
@@ -26,8 +27,7 @@ export default class Post extends React.Component {
 
     feedbackContent(props) {
         return (
-            <>
-            </>
+            <CommentSection currentUserId={1} />
         )
     }
 
