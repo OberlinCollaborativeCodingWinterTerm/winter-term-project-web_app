@@ -2,9 +2,10 @@ import "./myaccount.scss";
 import {Container, Row, Col} from 'react-bootstrap';
 import AnnouncementPreviewPost from '../../components/postpreview/types/AnnouncementPreviewPost';
 //import Calendar from '../../components/calendar'
-import Header from '../../components/header/Header'
-import Courses from '../../pages/courses/Courses'
-import Posts from '../../components/posts/Posts'
+import Header from '../../components/header/Header';
+import Courses from '../../pages/courses/Courses';
+import Posts from '../../components/posts/Posts';
+import CommentSection from '../../components/commentsection/CommentSection';
 
 const MyAccount = () => {
     return (
@@ -14,7 +15,7 @@ const MyAccount = () => {
                 <img src="https://picsum.photos/1600/1200" alt="" className="cover" />
                 <img src="https://picsum.photos/200" alt="" className="profilePic" />
             </div>
-   
+
             <div className="profileContainer">
                 <div className ="fullName">
                     <h1>Web App</h1>
@@ -42,13 +43,8 @@ const MyAccount = () => {
             </Container>
             <Container>
                 <h2> My Posts </h2>
-                <AnnouncementPreviewPost
-                                userIcon="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
-                                classId="CSCI-151"
-                                title="Sample Title"
-                                description="Sample description text."
-                                tags={["tag1", "tag2"]} />
                 <Posts/>
+                <CommentSection currentUserId = "1"/>
             </Container>
         </div>
     )
