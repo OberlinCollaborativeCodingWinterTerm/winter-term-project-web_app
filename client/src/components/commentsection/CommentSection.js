@@ -1,6 +1,7 @@
 
 import { Container } from "react-bootstrap";
-import SampleComments, {
+import {
+  sampleComments as sampleCommentsApi,
   createComment as createCommentApi,
   deleteComment as deleteCommentApi,
   updateComment as updateCommentApi
@@ -21,10 +22,6 @@ const CommentSection = ({currentUserId}) => {
 
   console.log("backendComments", backendComments);
 
-  const getReplies = commentId => {
-    backendComments.filter( (backendComment) => backendComment.parentId === commentId);
-  };
-
   const addComment = (inputText, parentCommentId) => {
     console.log("addComment", inputText, parentCommentId);
     createCommentApi(inputText, parentCommentId).then((comment) => {
@@ -44,11 +41,11 @@ const CommentSection = ({currentUserId}) => {
     };
   };
 
-  const updateComment = (inputText, commentId) => {            /*}//text or textInput?*/
+  const updateComment = (inputText, commentId) => {
     updateCommentApi(inputText, commentId).then(()=> {
       const updatedBackendComments = backendComments.map(backendComment => {
         if (backendComment.id === commentId) {
-          return {...backendComment, body: inputText}
+          return {...backendComment, content: inputText}
         }
         return backendComment;
       });
@@ -59,17 +56,22 @@ const CommentSection = ({currentUserId}) => {
 
 
   useEffect(() => {
-    SampleComments().then(data => {
+    sampleCommentsApi().then(data => {
       setBackendComments(data);
     });
   }, []);
+
+  const getReplies = (commentId) => {
+    backendComments.filter(backendComment => (backendComment.parentCommentId === commentId));
+  };
+
 
   return (
     <div>
       <h3>Comments</h3>
            <div>
               <NewComment submitLabel = "Comment" handleSubmit={addComment} />
-              {rootComments.map( (rootComment) => (
+              {rootComments.map(rootComment => (
                 <Comment
                   key = {rootComment.id}
                   comment= {rootComment}

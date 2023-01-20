@@ -1,13 +1,14 @@
 import React, {useState} from "react";
 import './newComment.scss';
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 const NewComment = ({
   handleSubmit,
   submitLabel,
   hasCancelButton = false,
   initialText = '',
-  handleCancel }) => {
+  handleCancel} ) => {
 
   const [inputText, setInputText] = useState(initialText);
   const isTextareaDisabled = inputText.length === 0;
@@ -25,13 +26,13 @@ const NewComment = ({
   }
 
   return (
-      <Form.Group onSubmit={onSubmit}>
-        <textarea
-        onChange={handleChange}
-        id="commentText"
-        value = {inputText}
+      <Form.Group>
+        <Form.Control as="textarea" rows={3}
+          onChange={handleChange}
+          id="commentText"
+          value = {inputText}
         />
-        <button disabled={isTextareaDisabled}>{submitLabel}</button>
+        <Button variant="primary" disabled={isTextareaDisabled} onClick={onSubmit}>{submitLabel} </Button>
         {hasCancelButton && (
           <button
           type="button"

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import './comment.scss';
 import NewComment from "../newcomment/NewComment";
 
-const Comment = (comment,replies,currentUserId,deleteComment,updateComment,activity,setActivity,addComment,parentCommentId = null) => {
+const Comment = ({comment, replies, setActivity, activity, updateComment, deleteComment, addComment,parentCommentId = null,currentUserId}) => {
 
   const canReply = Boolean(currentUserId);  //whatDoesThisMean?
   //can only edit or delete if you're the one who posted!
@@ -26,37 +26,39 @@ const Comment = (comment,replies,currentUserId,deleteComment,updateComment,activ
   const replyId = parentCommentId ? parentCommentId : comment.id;
 
   return (
-    <Container>
-      {/*<div>{createdAt}</div>*/}
-      <div>{comment.username}</div>
-      {!isEditing && <div>{comment.content}</div>}
-      {isEditing && (
-        <NewComment
-          submitLabel="Done"
-          hasCancelButton
-          initialText={comment.content}
-          handleSubmit={(inputText)=> updateComment(inputText, comment.id)}
-          handleCancel={()=> setActivity(null)}
-        />
-      )}
-      <div>
-        {canReply && (<div onClick={()=>setActivity({id: comment.id, type: "replying"})
-        }>Reply</div>)}
+    <div key={comment.id} >
+      <Container className="container-md bg-white p-4">
+        <div>
+          {comment.username}
+        </div>
+        {!isEditing && <div>{comment.content}</div>}
+        {isEditing && (
+          <NewComment
+            submitLabel="Done"
+            hasCancelButton
+            initialText={comment.content}
+            handleSubmit={(inputText)=> updateComment(inputText, comment.id)}
+            handleCancel={()=> setActivity(null)}
+          />
+        )}
+        <div className="comment-action">
+          {canReply && (<div onClick={()=>setActivity({id: comment.id, type: "replying"})
+          }>Reply</div>)}
 
-        {canEdit && (<div onClick={()=>setActivity({id: comment.id, type: "editing"})
-        }>Edit</div>)}
+          {canEdit && (<div onClick={()=>setActivity({id: comment.id, type: "editing"})
+          }>Edit</div>)}
 
-        {canDelete && <div onClick={()=> deleteComment(comment.id)}> Delete </div> }
-      </div>
+          {canDelete && <div onClick={()=> deleteComment(comment.id)}> Delete </div> }
+        </div>
 
-      {isReplying && (
-        <NewComment
-          submitLabel="Reply"
-          handleSubmit={(inputText)=>addComment(inputText, replyId)}/>
-      )}
+        {isReplying && (
+          <NewComment
+            submitLabel="Reply"
+            handleSubmit={(inputText) => addComment(inputText, replyId)}/>
+        )}
 
+        {(replies.length) > 0 && (
 
-        {replies.length > 0 && (
           <div>
             {replies.map(reply => (
               <Comment
@@ -70,10 +72,12 @@ const Comment = (comment,replies,currentUserId,deleteComment,updateComment,activ
                 activity={activity}
                 setActivity={setActivity}
                 addComment={addComment}/>
-            ))}
-        </div>
-       )}
-    </Container>
+              ))}
+          </div>
+        )}
+
+      </Container>
+    </div>
     // <div>
     //   <small>
     //    <img alt="" src={comment.icon} style={{ width: '1.5em', height: '1.5em' }} className="rounded-circle"  />
@@ -139,7 +143,7 @@ export default Comment;
         [
         {
         id: "1 ",
-        body: "Comment here!",
+        content: "Comment here!",
         username: "John",
         userId: "1",
         parentCommentId: null,     //Not a reply
@@ -147,7 +151,7 @@ export default Comment;
         },
         {
         id: "2",
-        body: "Replay!",
+        content: "Replay!",
         username: "Tom",
         userId: "2",
         parentCommentId: "1",  //Replied to comment "1"

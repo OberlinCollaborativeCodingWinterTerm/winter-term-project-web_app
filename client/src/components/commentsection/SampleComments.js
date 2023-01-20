@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SampleComments = async () => {
+export const sampleComments = async () => {
   return [
   {
     id: "1 ",
@@ -33,23 +33,21 @@ const SampleComments = async () => {
   ];
 };
 
-export const createComment = async (text, parentCommentId = null) => {
+export const createComment = async (inputText, parentCommentId = null) => {
   return {
     id: Math.random().toString(36).substr(2,9),
-    body: text,
+    content: inputText,
     parentCommentId,
-    userId: '1',
+    userId: "1",
     username: "John",
     createdAt: new Date().toISOString(),
   };
 };
 
-export const updateComment = async (text) => {
-  return { text };
+export const updateComment = async (inputText) => {
+  return { inputText };
 };
 
 export const deleteComment = async () => {
   return {};
 };
-
-export default SampleComments;
