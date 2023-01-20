@@ -21,7 +21,6 @@ app.use(express.json());
 app.use( '/api/user', userRoutes); 
 
 
-
 mongoose.set("strictQuery", false);
 mongoose.connect(process.env.DB_URL)
     .then(()=>{
@@ -35,17 +34,13 @@ mongoose.connect(process.env.DB_URL)
     })
 
 
-
-
-
-// Example routes
+// Example routes; not connected to the routes + controllers yet
 app.get("/api", (req, res) => {
     res.json({"users": ["userOne", "userTwo", "userThree"]});   
 })
 
 app.post("/register", (req, res)=>{
     res.json({mssg: "register"});
-    // const {username, password }=req.body;  
 })
 
 app.post("/login", (req, res)=>{

@@ -3,11 +3,24 @@
 // on the database from the models 
 
 const User=require("../models/userModel")
+const jwt=require("jsonwebtoken")
+
+// id is a part of the payload
+const createToken = (_id) => {
+    return jwt.sign({_id}, process.env.SECRET, {expiresIn: '4d'}); 
+}
 
 //Login user
 // Async function to communicate with the database
 const loginUser=async(req, res)=>{
-    res.json({mssg: "login user"})
+    const {email, password}=req.body
+    try {
+        const user= await User.login(email, password)
+        const token=createToken(user._id); 
+        res.status(200).json({email, token})
+    } catch (error){
+        res.status(400).json({error: error.message})
+    }
 }
 
 // Signup user
@@ -15,8 +28,9 @@ const signupUser=async(req, res)=>{
     const {name, email, password}=req.body 
     try {
         const user= await User.signup(name, email, password)
+        const token=createToken(user._id);
         // res.status(200) means that the request has succeded 
-        res.status(200).json({email, user})
+        res.status(200).json({email, token})
     } catch (error){
         res.status(400).json({error: error.message})
     }
