@@ -42,7 +42,7 @@ export default class StudyGroupPost extends Post {
                 </div>
                 <span className={`${this.state.grayed ? "text-quaternary" : "text-tertiary"} px-1`}>{props.members.length}/{props.limit} spots taken</span>
                 {(props.members.length < props.limit || this.state.joined) && <Button onClick={() => {
-                    if (!this.state.joined) {
+                    if (!this.state.joined && !this.state.preview) {
                         props.members.push({
                             icon: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
                             username: "username",
@@ -52,7 +52,7 @@ export default class StudyGroupPost extends Post {
                         this.setState({joined: true});
                     }
                 }
-                } variant="success" className="rounded-pill px-3 py-1 mx-1" disabled={this.state.joined}>{this.state.joined ? "Joined" : "Join"}</Button>}
+                } variant="success" className="rounded-pill px-3 py-1 mx-1 mb-0" disabled={this.state.joined}>{this.state.joined ? "Joined" : "Join"}</Button>}
             </div>
         );
     }
