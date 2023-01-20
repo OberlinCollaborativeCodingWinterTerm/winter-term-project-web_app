@@ -1,10 +1,9 @@
 import React from "react";
-import { Badge, Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Container } from "react-bootstrap";
 import './comment.scss';
-import NewComment from "../newcomment/NewComment";
+import CommentInput from "../commentinput/CommentInput";
 
-const Comment = ({comment, replies, setActivity, activity, updateComment, deleteComment, addComment,parentCommentId = null,currentUserId}) => {
+const Comment = ({comment, replies, setActivity, activity, getReplies, updateComment, deleteComment, addComment,parentCommentId = null,currentUserId}) => {
 
   const canReply = Boolean(currentUserId);  //whatDoesThisMean?
   //can only edit or delete if you're the one who posted!
@@ -16,66 +15,80 @@ const Comment = ({comment, replies, setActivity, activity, updateComment, delete
   const isReplying =
     activity &&
     activity.type === "replying" &&
-    activity.id === comment.id;
+    activity.commentId === comment.commentId;
 
   const isEditing =
     activity &&
     activity.type === "editing" &&
-    activity.id === comment.id;
+    activity.commentId === comment.commentId;
 
-  const replyId = parentCommentId ? parentCommentId : comment.id;
+  const replyId = parentCommentId ? parentCommentId : comment.commentId;
+  const createdAt = new Date(comment.createdAt).toLocaleDateString();
 
   return (
-    <div key={comment.id} >
-      <Container className="container-md bg-white p-4">
-        <div>
-          {comment.username}
-        </div>
-        {!isEditing && <div>{comment.content}</div>}
+    <div key={comment.commentId} className ="comment" >
+      <Container className="container-sm bg-white p-4">
+           <div className = "user-info">
+              <div className= "left">
+                <div>
+                  <img src={comment.icon}/>
+                </div>
+              </div>
+              <div className ="right">
+                <div className = "comment-details">
+                  <div className = "comment-author">{comment.username}</div>
+                  {createdAt}
+                </div>
+              </div>
+          </div>
+
+        {!isEditing && <div className ="comment-text">{comment.content}</div>}
         {isEditing && (
-          <NewComment
+          <CommentInput
             submitLabel="Done"
             hasCancelButton
             initialText={comment.content}
-            handleSubmit={(inputText)=> updateComment(inputText, comment.id)}
+            handleSubmit={(inputText)=> updateComment(inputText, comment.commentId)}
             handleCancel={()=> setActivity(null)}
           />
         )}
-        <div className="comment-action">
-          {canReply && (<div onClick={()=>setActivity({id: comment.id, type: "replying"})
+
+
+        <div className="comment-actions">
+          {canReply && (<div className = "comment-action" onClick={()=>setActivity({commentId: comment.commentId, type: "replying"})
           }>Reply</div>)}
 
-          {canEdit && (<div onClick={()=>setActivity({id: comment.id, type: "editing"})
+          {canEdit && (<div className = "comment-action" onClick={()=>setActivity({commentId: comment.commentId, type: "editing"})
           }>Edit</div>)}
 
-          {canDelete && <div onClick={()=> deleteComment(comment.id)}> Delete </div> }
+          {canDelete && <div className = "comment-action" onClick={()=> deleteComment(comment.commentId)}> Delete </div> }
         </div>
 
         {isReplying && (
-          <NewComment
+          <CommentInput
             submitLabel="Reply"
-            handleSubmit={(inputText) => addComment(inputText, replyId)}/>
+            handleSubmit={(inputText) => addComment(inputText, replyId)}
+            hasCancelButton
+            handleCancel={()=> setActivity(null)}/>
         )}
 
         {(replies.length) > 0 && (
-
-          <div>
+          <div className = "replies">
             {replies.map(reply => (
               <Comment
                 comment={reply}
-                key={reply.id}
-                replies={[]}
+                key={reply.commentId}
+                replies={getReplies(reply.commentId)}
                 currentUserId={currentUserId}
                 deleteComment={deleteComment}
                 updateComment={updateComment}
-                parentCommentId={comment.id}
+                parentCommentId={comment.commentId}
                 activity={activity}
                 setActivity={setActivity}
                 addComment={addComment}/>
               ))}
-          </div>
+            </div>
         )}
-
       </Container>
     </div>
     // <div>

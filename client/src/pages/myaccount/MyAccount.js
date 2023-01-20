@@ -44,7 +44,7 @@ const MyAccount = () => {
             <Container>
                 <h2> My Posts </h2>
                 <Posts/>
-                <CommentSection currentUserId = "1"/>
+                <CommentSection currentUserId="1"/>
             </Container>
         </div>
     )

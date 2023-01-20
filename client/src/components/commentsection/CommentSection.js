@@ -10,7 +10,7 @@ import {
 import React, {useState, useEffect} from "react";
 import './commentsection.scss';
 import Comment from '../comment/Comment';
-import NewComment from "../newcomment/NewComment";
+import CommentInput from "../commentinput/CommentInput";
 
 
 const CommentSection = ({currentUserId}) => {
@@ -34,7 +34,7 @@ const CommentSection = ({currentUserId}) => {
     if (window.confirm("Are you sure you want to delete this comment?")) {
       deleteCommentApi(commentId).then(()=> {
         const updatedBackendComments = backendComments.filter(
-          (backendComment) => backendComment.id !== commentId
+          (backendComment) => backendComment.commentId !== commentId
         );
         setBackendComments(updatedBackendComments);
       });
@@ -44,7 +44,7 @@ const CommentSection = ({currentUserId}) => {
   const updateComment = (inputText, commentId) => {
     updateCommentApi(inputText, commentId).then(()=> {
       const updatedBackendComments = backendComments.map(backendComment => {
-        if (backendComment.id === commentId) {
+        if (backendComment.commentId === commentId) {
           return {...backendComment, content: inputText}
         }
         return backendComment;
@@ -61,21 +61,25 @@ const CommentSection = ({currentUserId}) => {
     });
   }, []);
 
-  const getReplies = (commentId) => {
-    backendComments.filter(backendComment => (backendComment.parentCommentId === commentId));
+  const getReplies = (commentid) => {
+    return backendComments.filter((backendComment) => (backendComment.parentCommentId === commentid)).sort(
+      (a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+    );
   };
+
 
 
   return (
     <div>
       <h3>Comments</h3>
            <div>
-              <NewComment submitLabel = "Comment" handleSubmit={addComment} />
+              <CommentInput submitLabel = "Comment" handleSubmit={addComment} />
               {rootComments.map(rootComment => (
                 <Comment
-                  key = {rootComment.id}
+                  key = {rootComment.commentId}
                   comment= {rootComment}
-                  replies={getReplies(rootComment.id)}
+                  replies={getReplies(rootComment.commentId)}
+                  getReplies={getReplies}
                   currentUserId={currentUserId}
                   deleteComment = {deleteComment}
                   updateComment = {updateComment}
