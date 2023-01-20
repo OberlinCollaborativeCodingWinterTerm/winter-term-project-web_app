@@ -7,7 +7,7 @@ import {Outlet, Route, Routes} from "react-router-dom";
 import FilterSidebar from './components/filtersidebar/FilterSidebar';
 import Header from "./components/header/Header";
 
-// page imports 
+// page imports
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
 import ViewPost from "./pages/viewpost/ViewPost";

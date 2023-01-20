@@ -1,9 +1,9 @@
 import React, {useState} from "react";
-import './newComment.scss';
+import './commentInput.scss';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-const NewComment = ({
+const CommentInput = ({
   handleSubmit,
   submitLabel,
   hasCancelButton = false,
@@ -28,18 +28,23 @@ const NewComment = ({
   return (
       <Form.Group>
         <Form.Control as="textarea" rows={3}
+          className = "textarea"
           onChange={handleChange}
           id="commentText"
           value = {inputText}
         />
-        <Button variant="primary" disabled={isTextareaDisabled} onClick={onSubmit}>{submitLabel} </Button>
+        <Button
+          type="button"
+          class="btn btn-primary"
+          disabled={isTextareaDisabled}
+          onClick={onSubmit}>{submitLabel} </Button>
         {hasCancelButton && (
-          <button
+          <Button
           type="button"
           onClick={handleCancel}
-          >Cancel</button>)}
+          >Cancel</Button>)}
       </Form.Group>
   );
 };
 
-export default NewComment;
+export default CommentInput;
