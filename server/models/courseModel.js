@@ -10,3 +10,5 @@ const Course = new mongoose.Schema(
         fullName: {type: String, required: true}
     }
 )
+
+module.exports = mongoose.model("Course", Course);
