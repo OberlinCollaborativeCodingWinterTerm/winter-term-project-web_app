@@ -7,18 +7,22 @@ const mongoose=require("mongoose");
 const cors=require("cors");
 const userRoutes=require("./routes/user");
 
-// const bcrypt=require("bcrypt"); 
 
 // app.use() is middleware function, fires for every request coming in between giving a response back
 app.use(cors());
-
+  
 // Allows access to the body of a request
 app.use(express.json()); 
 
+app.use((req, res, next) => {
+    console.log(req.path, req.method)
+    next()
+  })
 // Grabs all the routes from the path to be able to use through app.get or other functions
 // When user follows below path, the function with "/" in the routes is fired. 
 // .../api/user/login 
-app.use( '/api/user', userRoutes); 
+
+app.use( '/user', userRoutes); 
 
 
 mongoose.set("strictQuery", false);
@@ -34,26 +38,7 @@ mongoose.connect(process.env.DB_URL)
     })
 
 
-// Example routes; not connected to the routes + controllers yet
-app.get("/api", (req, res) => {
-    res.json({"users": ["userOne", "userTwo", "userThree"]});   
-})
 
-app.post("/register", (req, res)=>{
-    res.json({mssg: "register"});
-})
-
-app.post("/login", (req, res)=>{
-    res.json({mssg: "login"});
-})
-
-app.get("/profile", (req, res)=>{
-    res.json({mssg: "profile"});
-})
-
-app.put("/", (req,res)=>{
-    return res.send("Received a PUT HTTP method"); 
-})
 
 
 

@@ -4,7 +4,7 @@
 import {createContext, useReducer} from 'react'
 
 //Create a context
-export const authContext=createContext()
+export const AuthContext=createContext()
 
 export const authReducer=(state, action) =>{
     switch (action.type){
@@ -18,14 +18,14 @@ export const authReducer=(state, action) =>{
 }
 
 // Custom component to wrap the passed children  
-export const authContextProvider=({children})=>{
+export const AuthContextProvider=({children})=>{
     const [state, dispatch]=useReducer(authReducer, {
         user: null 
     })
-    console.log("authContext state: ", state)
+    console.log("AuthContext state: ", state)
     return (
-        <authContext.Provider value={{...state, dispatch}}>
+        <AuthContext.Provider value={{...state, dispatch}}>
             {children}
-        </authContext.Provider>
+        </AuthContext.Provider>
     )
 }

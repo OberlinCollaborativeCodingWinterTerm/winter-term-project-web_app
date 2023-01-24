@@ -16,11 +16,13 @@ import Courses from './pages/courses/Courses';
 import Home from './pages/home/Home';
 import MyAccount from './pages/myaccount/MyAccount';
 import CourseFeed from "./pages/coursefeed/CourseFeed";
+import { AuthContextProvider } from './contexts/AuthContext';
 
 function App() {
 
   return (
     <div className="App">
+        <AuthContextProvider>
         <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
@@ -34,6 +36,7 @@ function App() {
                 <Route path="courses/:course" element={<CourseFeed />} />
             </Route>
         </Routes>
+        </AuthContextProvider>
     </div>
   );
 }

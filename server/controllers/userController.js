@@ -25,12 +25,12 @@ const loginUser=async(req, res)=>{
 
 // Signup user
 const signupUser=async(req, res)=>{
-    const {name, email, password}=req.body 
+    const {firstName, lastName, email, password}=req.body 
     try {
-        const user= await User.signup(name, email, password)
+        const user= await User.signup(firstName, lastName, email, password)
         const token=createToken(user._id);
         // res.status(200) means that the request has succeded 
-        res.status(200).json({email, token})
+        res.status(200).json({firstName, lastName, email, token})
     } catch (error){
         res.status(400).json({error: error.message})
     }
