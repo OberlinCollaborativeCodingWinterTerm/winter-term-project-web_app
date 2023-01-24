@@ -6,7 +6,6 @@ import { useState } from 'react';
 import { useLogin } from '../../hooks/useLogin';
 
 function Login() {
-    //const history = useHistory();
     //const registerPage = () => { history.push("/register") }
 
     const [email, setEmail] = useState("")
@@ -16,7 +15,7 @@ function Login() {
 
     const handleSubmit = async (e) =>{
         e.preventDefault()
-        await login(email, password) 
+        await login(email, password)
     }
 
     return (
