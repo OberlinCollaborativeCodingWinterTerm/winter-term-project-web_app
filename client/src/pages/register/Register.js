@@ -14,6 +14,7 @@ const Register = () => {
     const handleSubmit = async (e) =>{
         e.preventDefault()
         await signup(firstName, lastName, email, password)
+        this.props.history.push("/")
        // await signup( email, password)
         // console.log(firstName, lastName, email,password)
     }
@@ -58,7 +59,9 @@ const Register = () => {
                                 value={password}/>
                         </FloatingLabel>
                     </Form.Group>
+                    
                     <Button disabled={isLoading} variant="primary" size="lg" type="submit" className="w-100">Sign up</Button>
+                   
                     {error && <div className="error">{error}</div>}
                     <span className="py-1 text-secondary">Already have an account? <Link to="/login">Log in</Link></span>
                 </Form>
