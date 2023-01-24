@@ -11,4 +11,11 @@ const Course = new mongoose.Schema(
     }
 )
 
+Course.statics.createCourse = async function(department, number, fullName, instructors) {
+    if (await this.findOne({department: department, number: number}).exec()) {
+        throw Error("Course already exists");
+    }
+    return this.create({department: department, number: number, fullName: fullName, instructors: instructors});
+}
+
 module.exports = mongoose.model("Course", Course);

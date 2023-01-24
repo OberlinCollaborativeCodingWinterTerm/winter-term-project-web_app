@@ -32,7 +32,13 @@ const Post=new mongoose.Schema(
     }
 )
 
-Post.statics.create = async function(type, authorId, courseDepartment, courseNumber, title, description, tags, data) {
+Post.statics.createPost = async function(type, authorId, courseDepartment, courseNumber, title, description, tags, data) {
+    if (!authorId || !courseDepartment || !courseNumber || !title || !description || !data) {
+        throw Error("All data fields must be filled");
+    }
+    if (type !== "announcement" && type !== "question" && type !== "group") {
+        throw Error("Invalid post type");
+    }
     const course = await Course.findOne({department: courseDepartment, number: courseNumber}).exec();
     if (!course) {
         throw Error("Course does not exist");
@@ -45,13 +51,15 @@ Post.statics.create = async function(type, authorId, courseDepartment, courseNum
     if (type.toLowerCase() === "group") {
         postData = {groupData: data};
     }
-    return await this.create({postType: type, author: author._id, course: course._id, title: title, description: description, tags: tags, ...postData});
+    return await this.create({postType: type, author: author._id, course: course._id, title: title, description: description, flair: "open", date: Date.now(), tags: tags, ...postData});
 }
 
-Post.statics.delete = async function(id) {
+Post.statics.deletePost = async function(id) {
     const post = await this.findById(id).exec();
     if (!post) {
         throw Error("Post does not exist");
     }
     return await this.delete(id);
 }
+
+module.exports = mongoose.model("Post", Post);
