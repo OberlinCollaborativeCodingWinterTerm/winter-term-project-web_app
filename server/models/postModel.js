@@ -32,6 +32,29 @@ const Post=new mongoose.Schema(
     }
 )
 
+Post.statics.getPost = async function(id) {
+    const post = await this.findById(id).exec();
+    if (!post) {
+        throw Error("Post does not exist");
+    }
+    return post;
+}
+
+Post.statics.getPosts = async function(courseId, userId) {
+    let query = {};
+    if (courseId) {
+        query.course = courseId;
+    }
+    if (userId) {
+        query.author = userId;
+    }
+    const posts = await this.find(query).exec();
+    if (!posts) {
+        throw Error("Post with specified course id does not exist");
+    }
+    return posts;
+}
+
 Post.statics.createPost = async function(type, authorId, courseDepartment, courseNumber, title, description, tags, data) {
     if (!authorId || !courseDepartment || !courseNumber || !title || !description || !data) {
         throw Error("All data fields must be filled");

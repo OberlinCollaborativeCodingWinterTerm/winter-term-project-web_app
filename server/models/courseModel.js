@@ -11,6 +11,14 @@ const Course = new mongoose.Schema(
     }
 )
 
+Course.statics.getId = async function(department, number) {
+    const course = await this.findOne({department: department, number: number}).exec();
+    if (!course) {
+        throw Error("Course does not exist");
+    }
+    return course._id;
+}
+
 Course.statics.createCourse = async function(department, number, fullName, instructors) {
     if (await this.findOne({department: department, number: number}).exec()) {
         throw Error("Course already exists");
