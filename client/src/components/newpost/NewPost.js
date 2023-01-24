@@ -1,4 +1,4 @@
-import {react, useState } from "react";
+import { useState } from "react";
 import { Modal, Button, Form, FloatingLabel , ButtonGroup, ToggleButton, Row, Col} from 'react-bootstrap';
 import './NewPost.css';
 
@@ -11,21 +11,23 @@ const NewPost = ({isShowing, handleclose}) => {
     const [currentType, setCurrentType] = useState('1');
 
     const [userinput, setUserInput] = useState({
-        "title": "",
-        "type": 'question',
-        "content": "",
+        title: "",
+        type: 'question',
+        content: "",
     })
     
-    const handlesubmit = () => {
+    const handlesubmit = (cancelSubmit) => {
         //gets data as store in function state userinput
-        console.log("Submitted new post!")
-        console.log(userinput);
+        if (!cancelSubmit){
+            console.log("Submitted new post!");
+            console.log(userinput);
+        }
 
         //resets user input state
         setUserInput({
-            "title": "",
-            "type": 'question',
-            "content": "",
+            title: "",
+            type: 'question',
+            content: "",
         })
         //closes the modal
         handleclose(false);
@@ -45,9 +47,9 @@ const NewPost = ({isShowing, handleclose}) => {
                             type="text"
                             placeholder="Enter Title"
                             onChange={(e) => (setUserInput({
-                                "title": e.target.value,
-                                "type" : userinput.type,
-                                "content": userinput.content,
+                                title: e.target.value,
+                                type: userinput.type,
+                                content: userinput.content,
                             }))}
                             />
                             <label htmlFor="title">Title</label>
@@ -66,9 +68,9 @@ const NewPost = ({isShowing, handleclose}) => {
                             value={type.value}
                             checked={currentType === type.value}
                             onChange={(button) => {setCurrentType(button.currentTarget.value); setUserInput({
-                                "title": userinput.title,
-                                "type" : (button.currentTarget.value === '1') ? "question" : "studygroup",
-                                "content": userinput.content,
+                                title: userinput.title,
+                                type: (button.currentTarget.value === '1') ? "question" : "studygroup",
+                                content: userinput.content,
                             })}}
                         >
                         {type.name}
@@ -83,9 +85,9 @@ const NewPost = ({isShowing, handleclose}) => {
                             as="textarea"
                             placeholder="What's happening?"
                             onChange={(e) => (setUserInput({
-                                "title": userinput.title,
-                                "type" : userinput.type,
-                                "content": e.target.value,
+                                title: userinput.title,
+                                type : userinput.type,
+                                content: e.target.value,
                             }))}
                             />
                         </FloatingLabel>
@@ -93,8 +95,8 @@ const NewPost = ({isShowing, handleclose}) => {
                 </Row>
                 <Row className="newpostbuttons">
                     <Modal.Footer>
-                        <Button variant="outline-secondary" size="lg" type="button" onClick={() => (handleclose(false))}>Dismiss</Button>
-                        <Button variant="primary" size="lg" type="submit" onClick={() => (handlesubmit())}>Post</Button>
+                        <Button variant="outline-secondary" size="lg" type="button" onClick={() => (handlesubmit(true))}>Dismiss</Button>
+                        <Button variant="primary" size="lg" type="submit" onClick={() => (handlesubmit(false))}>Post</Button>
                     </Modal.Footer>
                 </Row>
             </Col>

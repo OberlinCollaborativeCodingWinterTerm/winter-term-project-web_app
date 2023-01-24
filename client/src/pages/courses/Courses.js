@@ -1,10 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './courses.scss'
 import Course from '../../components/course/Course';
 import {Container, Row} from 'react-bootstrap';
 import FAButton from '../../components/fabutton/FAButton';
+import EditCourses from '../../components/editcourses/EditCourses';
 
 const Courses = () => {
+
+    const [ShowAddNewCourseWindow, setShowAddNewCourseWindow] = useState(false);
+
+    const handleclick = () => {
+        setShowAddNewCourseWindow(!ShowAddNewCourseWindow);
+    }
 
     // temporary array of example classes for demo
     const courses = [
@@ -58,8 +65,8 @@ const Courses = () => {
                     <Course course={course} key={course.id}/>                    ))}
                 </Row>
             </Container>
-            <FAButton tooltip="Add new course"/>
-            
+            <FAButton tooltip="Add new course" handleclick={handleclick}/>
+            <EditCourses isShowing={ShowAddNewCourseWindow} handleclose={handleclick}/>
         </div>
     )
 }
