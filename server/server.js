@@ -6,6 +6,8 @@ const app = express();
 const mongoose=require("mongoose"); 
 const cors=require("cors");
 const userRoutes=require("./routes/user");
+const postRoutes=require("./routes/post");
+const courseRoutes=require("./routes/course");
 
 
 // app.use() is middleware function, fires for every request coming in between giving a response back
@@ -22,7 +24,9 @@ app.use((req, res, next) => {
 // When user follows below path, the function with "/" in the routes is fired. 
 // .../api/user/login 
 
-app.use( '/user', userRoutes); 
+app.use("/user", userRoutes);
+app.use("/post", postRoutes);
+app.use("/course", courseRoutes);
 
 
 mongoose.set("strictQuery", false);
