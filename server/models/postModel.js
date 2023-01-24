@@ -76,6 +76,7 @@ Post.statics.createPost = async function(type, authorId, courseDepartment, cours
     let postData = {};
     if (type.toLowerCase() === "group") {
         postData = {groupData: data};
+        data.members.push(author._id);
     }
     return await this.create({postType: type, author: author._id, course: course._id, title: title, description: description, flair: "open", date: Date.now(), tags: tags, ...postData});
 }
