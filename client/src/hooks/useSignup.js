@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
+import {useNavigate} from "react-router-dom"
 
 export const useSignup = () =>{
     const [error, setError] =useState(null)
     const [isLoading, setIsLoading]=useState(null)
     const {dispatch}=useAuthContext()
-    
+    const navigate= useNavigate()
+
     const signup = async(firstName, lastName, email, password) =>{
         setIsLoading(true)
         setError(null)
@@ -30,6 +32,7 @@ export const useSignup = () =>{
             // Update the auth context, payload of the token is taken from json const
             dispatch({type: 'LOGIN', payload: json})
             setIsLoading(false)
+            navigate("/")
         }
     }
     return {signup, isLoading, error}

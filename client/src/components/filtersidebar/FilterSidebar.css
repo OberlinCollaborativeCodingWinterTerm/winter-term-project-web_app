@@ -18,8 +18,6 @@
 
 .filterbuttonsrow{
     margin: auto;
-    padding-top: 10px;
-    display:flex;
-    flex-direction: row;
+    padding-top: 15px;
     width: 95%;
 }

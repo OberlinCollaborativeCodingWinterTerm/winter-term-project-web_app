@@ -1,6 +1,6 @@
 import React from "react";
 import Multiselect from 'multiselect-react-dropdown';
-import {Button, Row, Col, ButtonToolbar, ButtonGroup} from 'react-bootstrap';
+import { Button, Row, Col } from 'react-bootstrap';
 
 import './FilterSidebar.css'
 
@@ -80,8 +80,6 @@ class FilterSidebar extends React.Component {
                 <Row className="filterbuttonsrow">
                     <Col>
                         <Button variant="outline-primary" size="lg" className="filterbutton">Apply</Button>
-                    </Col>
-                    <Col>
                     </Col>
                     <Col>
                         <Button variant="outline-primary" size="lg" type="reset" className="filterbutton" onClick={() => {this.reset_selection()}}>Reset</Button>

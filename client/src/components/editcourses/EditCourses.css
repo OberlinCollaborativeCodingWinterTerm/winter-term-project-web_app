@@ -1,0 +1,40 @@
+.modalcolumn {
+    width: 95%;
+    margin: auto;
+    padding: 7px;
+}
+
+.edittypeselector {
+    width: 75%;
+    margin: auto;
+    padding-top: 12px;
+    padding-left: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+.addnewcourse {
+    margin: auto;
+    padding: 5px;
+    padding-top: 6px;
+    padding-bottom: 10px;
+}
+
+.requestcoursetoggle {
+    width: 95%;
+    margin: auto;
+    padding: 10px;
+    padding-left: 20px;
+}
+
+.coursename {
+    margin: auto;
+    padding: 3px;
+    padding-top: 10px;
+    padding-bottom: 8px;
+}
+
+.addnewcoursebuttons{
+    margin: auto;
+    padding: 5px;
+}
