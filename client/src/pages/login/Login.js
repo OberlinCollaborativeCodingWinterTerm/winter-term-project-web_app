@@ -3,16 +3,19 @@ import './login.scss';
 import { Link } from "react-router-dom";
 import {Button, Col, Container, FloatingLabel, Form, Row} from "react-bootstrap";
 import { useState } from 'react';
+import { useLogin } from '../../hooks/useLogin';
+
 function Login() {
     //const history = useHistory();
     //const registerPage = () => { history.push("/register") }
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const {login, error, isLoading} = useLogin()
 
     const handleSubmit = async (e) =>{
         e.preventDefault()
-        console.log(email, password)
+        await login(email, password) 
     }
 
     return (
@@ -40,7 +43,8 @@ function Login() {
                     </Form.Group>
                     <Row className="gx-3">
                         <Col>
-                            <Button variant="primary" size="lg" type="submit" className="w-100">Login</Button>
+                            <Button disabled={isLoading} variant="primary" size="lg" type="submit" className="w-100">Login</Button>
+                            {error && <div className="error">{error}</div>}
                         </Col>
                         <Col>
                             <Link to="/register"><Button variant="outline-primary" size="lg" className="w-100">Register</Button></Link>

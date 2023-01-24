@@ -15,7 +15,6 @@ const Register = () => {
         e.preventDefault()
         await signup(firstName, lastName, email, password)
        // await signup( email, password)
-
         // console.log(firstName, lastName, email,password)
     }
     return (
