@@ -40,13 +40,16 @@ Post.statics.getPost = async function(id) {
     return post;
 }
 
-Post.statics.getPosts = async function(courseId, userId) {
+Post.statics.getPosts = async function(courseId, userId, tags) {
     let query = {};
     if (courseId) {
         query.course = courseId;
     }
     if (userId) {
         query.author = userId;
+    }
+    if (tags) {
+        query.tags = {$all: tags};
     }
     const posts = await this.find(query).exec();
     if (!posts) {
