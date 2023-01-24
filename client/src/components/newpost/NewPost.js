@@ -17,6 +17,7 @@ const NewPost = ({isShowing, handleclose}) => {
     })
     
     const handlesubmit = (cancelSubmit) => {
+        //cancel
         //gets data as store in function state userinput
         if (!cancelSubmit){
             console.log("Submitted new post!");
@@ -34,7 +35,7 @@ const NewPost = ({isShowing, handleclose}) => {
     }
 
     return (
-        <Modal show={isShowing} onHide={() => (handleclose(false))} centered>
+        <Modal show={isShowing} onHide={() => (handlesubmit(true))} centered>
             <Col className="modalcolumn">
                     <Modal.Header closeButton>
                         <Modal.Title>New post</Modal.Title>

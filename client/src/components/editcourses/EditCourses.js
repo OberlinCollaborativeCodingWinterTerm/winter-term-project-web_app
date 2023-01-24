@@ -66,7 +66,7 @@ const EditCourses = ({isShowing, handleclose}) => {
     }
 
     return (
-        <Modal show={isShowing} onHide={() => (handleclose(false))} centered>
+        <Modal show={isShowing} onHide={() => (handlesubmit(true))} centered>
             <Col className="modalcolumn">
                 <Modal.Header closeButton>
                     <Modal.Title>{(userinput.type !== "Remove") ? "Add New Course" : "Remove Course" }</Modal.Title>
