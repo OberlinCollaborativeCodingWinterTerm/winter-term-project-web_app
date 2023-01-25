@@ -85,7 +85,10 @@ User.statics.signup = async function(firstName, lastName, email, password) {
    }
    const salt=await bcrypt.genSalt(5); // Salt for hashing passwords
    const hash=await bcrypt.hash(password, salt) // Hashed password
-   const user=await this.create({firstName, lastName, email, password: hash})
+   const userData = {
+      courses: []
+   }
+   const user=await this.create({firstName, lastName, email, password: hash, userData})
    return user
 }
 
