@@ -40,7 +40,7 @@ Post.statics.getPost = async function(id) {
     return post;
 }
 
-Post.statics.getPosts = async function(courseId, userId, tags) {
+Post.statics.getPosts = async function(courseId, userId, tags, flair) {
     let query = {};
     if (courseId) {
         query.course = courseId;
@@ -50,6 +50,9 @@ Post.statics.getPosts = async function(courseId, userId, tags) {
     }
     if (tags) {
         query.tags = {$all: tags};
+    }
+    if (flair) {
+        query.flair = flair;
     }
     const posts = await this.find(query).exec();
     if (!posts) {

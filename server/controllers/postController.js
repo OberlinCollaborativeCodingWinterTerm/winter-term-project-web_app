@@ -11,9 +11,9 @@ const getPost = async(req, res) => {
 }
 
 const getPosts = async(req, res) => {
-    const {courseId, authorId, tags} = req.body;
+    const {courseId, authorId, tags, flair} = req.body;
     try {
-        const posts = await Post.getPosts(courseId, authorId, tags);
+        const posts = await Post.getPosts(courseId, authorId, tags, flair);
         res.status(200).json(posts);
     } catch (error) {
         res.status(400).json({error: error.message});

@@ -8,6 +8,7 @@ const cors=require("cors");
 const userRoutes=require("./routes/user");
 const postRoutes=require("./routes/post");
 const courseRoutes=require("./routes/course");
+const validateRoutes=require("./routes/validate");
 
 
 // app.use() is middleware function, fires for every request coming in between giving a response back
@@ -27,6 +28,7 @@ app.use((req, res, next) => {
 app.use("/user", userRoutes);
 app.use("/post", postRoutes);
 app.use("/course", courseRoutes);
+app.use("/validate", validateRoutes);
 
 
 mongoose.set("strictQuery", false);

@@ -15,7 +15,6 @@ const MyAccount = () => {
    
     return (
         <div className="profile">
-            <Header/>
             <div className="images">
                 <img src="https://picsum.photos/1600/1200" alt="" className="cover" />
                 <img src="https://picsum.photos/200" alt="" className="profilePic" />
