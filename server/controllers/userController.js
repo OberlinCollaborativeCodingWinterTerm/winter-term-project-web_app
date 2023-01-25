@@ -10,6 +10,16 @@ const createToken = (_id) => {
     return jwt.sign({_id}, process.env.SECRET, {expiresIn: '4d'}); 
 }
 
+const getData = async(req, res) => {
+    const {userId} = req.body;
+    try {
+        const data = await User.getData(userId);
+        res.status(200).json(data);
+    } catch (error) {
+        res.status(400).json({error: error.message});
+    }
+}
+
 //Login user
 // Async function to communicate with the database
 const loginUser=async(req, res)=>{
@@ -36,4 +46,4 @@ const signupUser=async(req, res)=>{
     }
 }
 
-module.exports={signupUser, loginUser}
+module.exports={signupUser, loginUser, getData}
