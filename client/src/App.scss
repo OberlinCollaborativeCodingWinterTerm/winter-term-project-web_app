@@ -20,7 +20,7 @@ $custom-colors: (
 $theme-colors: map-merge($theme-colors, $custom-colors);
 
 @import "~bootstrap/scss/bootstrap";
-
+@import 'react-bootstrap-sidebar-menu/dist/sidebar-menu.scss';
 
 #app-content {
   max-height: calc(100% - 64px); /* make this more consistent later? */

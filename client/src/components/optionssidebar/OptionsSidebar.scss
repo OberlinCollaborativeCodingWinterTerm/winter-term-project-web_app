@@ -1,2 +1,10 @@
+@import "src/App";
 
-
+.sidebar-menu-nav {
+  .sidebar-menu-nav-link {
+    &.active, &:hover {
+      background-color: darken(map-get($theme-colors, "primary"), 10%);
+    }
+    color: white !important;
+  }
+}

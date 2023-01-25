@@ -1,8 +1,11 @@
 .filtersidebar {
-    background-color: #EFF2F1;
-    padding: 2%;
-    width: 280px;
+    max-width: 260px;
 }
+
+.multiselect-container {
+    background-color: white;
+}
+/*
 
 .filtersidebarcategory {
     width: 80%;
@@ -20,4 +23,4 @@
     margin: auto;
     padding-top: 15px;
     width: 95%;
-}
+}*/

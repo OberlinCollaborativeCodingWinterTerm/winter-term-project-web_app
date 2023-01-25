@@ -1,5 +1,5 @@
 import Post from "../Post";
-import {AiOutlineUsergroupAdd} from "react-icons/ai";
+import {IoMdPeople} from "react-icons/io";
 import {IoMdCalendar} from "react-icons/io";
 import {MdLocationOn} from "react-icons/md";
 import {Button} from "react-bootstrap";
@@ -15,7 +15,7 @@ export default class StudyGroupPost extends Post {
 
     iconDisplay(props) {
         return (
-            <AiOutlineUsergroupAdd {...props} />
+            <IoMdPeople {...props} />
         )
     }
 

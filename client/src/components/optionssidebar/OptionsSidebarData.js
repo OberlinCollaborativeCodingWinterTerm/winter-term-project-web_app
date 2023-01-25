@@ -1,31 +1,28 @@
 import React from "react"
 // Icons Ref: https://react-icons.github.io/react-icons/icons?name=ai
-import { AiFillHome} from 'react-icons/ai';
-import { AiFillQuestionCircle} from 'react-icons/ai';
-import { AiOutlineUsergroupAdd} from 'react-icons/ai';
-import { AiFillNotification} from 'react-icons/ai';
+import {IoMdHome, IoMdHelpCircle, IoMdPeople, IoMdAlert} from 'react-icons/io';
 
 // Link attributes are subject to change
 export const SidebarData=[
     {
         title:"Everything",
-        icon: <AiFillHome />,
-        link: "/viewpost"
+        icon: IoMdHome,
+        link: "/"
     }, 
     {
         title:"Questions",
-        icon: <AiFillQuestionCircle />, 
-        link: "/viewpost"
+        icon: IoMdHelpCircle,
+        link: "/questions"
     }, 
     {
         title:"Study Groups",
-        icon:<AiOutlineUsergroupAdd />, 
-        link: "/viewpost"
+        icon: IoMdPeople,
+        link: "/groups"
     },
     {
         title:"Announcements",
-        icon:<AiFillNotification />, 
-        link: "/"
+        icon: IoMdAlert,
+        link: "/announcements"
     }, 
 
 ]

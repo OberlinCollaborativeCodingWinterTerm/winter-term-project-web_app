@@ -38,11 +38,11 @@ class FilterSidebar extends React.Component {
     }
     render() {
         return (
-            <Col className="filtersidebar pt-3">
+            <Col className="d-flex flex-column filtersidebar pt-3 px-4 gap-1 bg-light">
                 <Row>
                     <h4 className="filterheadings">Class Filters</h4>
                 </Row>
-                <Row>
+                <Row className="pb-3">
                     <Multiselect
                             className="filtersidebarcategory"
                             isObject={false}
@@ -60,7 +60,7 @@ class FilterSidebar extends React.Component {
                 <Row>
                     <h4 className="filterheadings">Date Filters</h4>
                 </Row>
-                <Row>
+                <Row className="pb-2">
                     <Multiselect
                             className="filtersidebarcategory"
                             isObject={false}
@@ -77,12 +77,12 @@ class FilterSidebar extends React.Component {
                             singleSelect={true}
                     />
                 </Row>
-                <Row className="filterbuttonsrow">
+                <Row className="filterbuttonsrow gx-3">
                     <Col>
-                        <Button variant="outline-primary" size="lg" className="filterbutton">Apply</Button>
+                        <Button variant="outline-primary" size="lg" className="filterbutton w-100">Apply</Button>
                     </Col>
                     <Col>
-                        <Button variant="outline-primary" size="lg" type="reset" className="filterbutton" onClick={() => {this.reset_selection()}}>Reset</Button>
+                        <Button variant="outline-primary" size="lg" type="reset" className="filterbutton w-100" onClick={() => {this.reset_selection()}}>Reset</Button>
                     </Col>
                 </Row>
             </Col>

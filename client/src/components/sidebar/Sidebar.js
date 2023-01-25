@@ -5,7 +5,7 @@ import {OptionsSidebar} from "../optionssidebar/OptionsSidebar";
 class Sidebar extends React.Component {
     render() {
         return (
-            <div className={"d-flex flex-column " + this.props.className}>
+            <div className={"shadow-sm d-flex flex-column " + this.props.className}>
                 <OptionsSidebar />
                 <FilterSidebar />
             </div>

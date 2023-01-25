@@ -1,5 +1,5 @@
 import Post from "../Post";
-import {AiFillQuestionCircle} from "react-icons/ai";
+import {IoMdHelpCircle} from "react-icons/io";
 
 export default class QuestionPost extends Post {
     constructor(props) {
@@ -10,7 +10,7 @@ export default class QuestionPost extends Post {
 
     iconDisplay(props) {
         return (
-            <AiFillQuestionCircle {...props} />
+            <IoMdHelpCircle {...props} />
         )
     }
 

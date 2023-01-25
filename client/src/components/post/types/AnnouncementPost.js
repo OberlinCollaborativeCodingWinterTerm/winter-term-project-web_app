@@ -1,5 +1,5 @@
 import Post from "../Post";
-import {AiFillNotification} from "react-icons/ai";
+import {IoMdAlert} from "react-icons/io";
 
 export default class AnnouncementPost extends Post {
     constructor(props) {
@@ -10,7 +10,7 @@ export default class AnnouncementPost extends Post {
 
     iconDisplay(props) {
         return (
-            <AiFillNotification {...props} />
+            <IoMdAlert {...props} />
         )
     }
 
