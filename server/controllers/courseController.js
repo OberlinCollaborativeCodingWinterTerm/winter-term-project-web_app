@@ -1,5 +1,15 @@
 const Course = require("../models/courseModel");
 
+const getData = async(req, res) => {
+    const {courseId} = req.body;
+    try {
+        const courseData = await Course.getData(courseId);
+        res.status(200).json(courseData);
+    } catch (error) {
+        res.status(400).json({error: error.message});
+    }
+}
+
 const getId = async(req, res) => {
     const {department, number} = req.body;
     try {
@@ -20,4 +30,4 @@ const createCourse = async(req, res) => {
     }
 }
 
-module.exports = {createCourse, getId};
+module.exports = {createCourse, getId, getData};

@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './courses.scss'
 import Course from '../../components/course/Course';
 import {Container, Row} from 'react-bootstrap';
 import FAButton from '../../components/fabutton/FAButton';
 import EditCourses from '../../components/editcourses/EditCourses';
+import {useData} from "../../hooks/useData";
 
 const Courses = () => {
 
@@ -13,8 +14,12 @@ const Courses = () => {
         setShowAddNewCourseWindow(!ShowAddNewCourseWindow);
     }
 
+    const [courseList, updateCourseList] = useState([]);
+
+    const {getCourseList} = useData();
+
     // temporary array of example classes for demo
-    const courses = [
+    /*const courses = [
         {
             id: 1,
             department: 'CSCI',
@@ -55,14 +60,20 @@ const Courses = () => {
             studentCount: 18,
             questions: 1
         }, 
-    ]
+    ]*/
+    useEffect(() => {
+        getCourseList().then((coursesObject) => {
+            updateCourseList(coursesObject);
+        });
+    }, []);
 
     return (
         <div className='courses'>
             <Container className="p-0 mt-5">
                 <Row className="row-cols-sm-1 gap-4" style={{ columnGap: 0 }}>
-                {courses.map(course=>(
-                    <Course course={course} key={course.id}/>                    ))}
+                {courseList.map(course=>(
+                    <Course course={course} key={course._id}/>
+                ))}
                 </Row>
             </Container>
             <FAButton tooltip="Add new course" handleclick={handleclick}/>

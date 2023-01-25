@@ -1,15 +1,27 @@
 const mongoose=require("mongoose")
+const Post = require("./postModel");
+
+const isInteger = {
+    validator: Number.isInteger
+};
 
 const Course = new mongoose.Schema(
     {
         instructors: {type: [{first: String, last: String}], required: true},
         department: {type: String, required: true},
-        number: {type: Number, required: true, validate: {
-                validator: Number.isInteger
-            }},
-        fullName: {type: String, required: true}
+        number: {type: Number, required: true, validate: isInteger},
+        fullName: {type: String, required: true},
+        studentCount: {type: Number, default: 0, validate: isInteger}
     }
 )
+
+Course.statics.getData = async function(courseId) {
+    const course = await this.findById(courseId).exec();
+    if (!course) {
+        throw Error("Course does not exist");
+    }
+    return {...course._doc, unansweredQuestions: (await Post.getPosts(courseId, undefined, undefined, "open")).length};
+}
 
 Course.statics.getId = async function(department, number) {
     const course = await this.findOne({department: department, number: number}).exec();

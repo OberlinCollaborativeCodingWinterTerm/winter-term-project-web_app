@@ -10,10 +10,40 @@ const createToken = (_id) => {
     return jwt.sign({_id}, process.env.SECRET, {expiresIn: '4d'}); 
 }
 
+const courseList = async(req, res) => {
+    const {userId} = req.body;
+    try {
+        const data = await User.courseList(userId ?? req.user);
+        res.status(200).json(data);
+    } catch (error) {
+        res.status(400).json({error: error.message});
+    }
+}
+
+const addCourse = async(req, res) => {
+    const {courseId} = req.body;
+    try {
+        const data = await User.addCourse(req.user, courseId);
+        res.status(200).json(data);
+    } catch (error) {
+        res.status(400).json({error: error.message});
+    }
+}
+
+const removeCourse = async(req, res) => {
+    const {courseId} = req.body;
+    try {
+        const data = await User.removeCourse(req.user, courseId);
+        res.status(200).json(data);
+    } catch (error) {
+        res.status(400).json({error: error.message});
+    }
+}
+
 const getData = async(req, res) => {
     const {userId} = req.body;
     try {
-        const data = await User.getData(userId);
+        const data = await User.getData(userId ?? req.user);
         res.status(200).json(data);
     } catch (error) {
         res.status(400).json({error: error.message});
@@ -27,7 +57,7 @@ const loginUser=async(req, res)=>{
     try {
         const user= await User.login(email, password)
         const token=createToken(user._id); 
-        res.status(200).json({firstName: user.firstName, lastName: user.lastName, email, token})
+        res.status(200).json({_id: user._id, firstName: user.firstName, lastName: user.lastName, email, token})
     } catch (error){
         res.status(400).json({error: error.message})
     }
@@ -40,10 +70,10 @@ const signupUser=async(req, res)=>{
         const user= await User.signup(firstName, lastName, email, password)
         const token=createToken(user._id);
         // res.status(200) means that the request has succeded 
-        res.status(200).json({firstName, lastName, email, token})
+        res.status(200).json({_id: user._id, firstName, lastName, email, token})
     } catch (error){
         res.status(400).json({error: error.message})
     }
 }
 
-module.exports={signupUser, loginUser, getData}
+module.exports={signupUser, loginUser, getData, courseList, addCourse, removeCourse}

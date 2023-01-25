@@ -21,6 +21,19 @@ const User=new mongoose.Schema(
    }
 )
 
+User.statics.courseList = async function(userId) {
+   const user = await this.findById(userId).exec();
+
+   if (!user) {
+      throw Error("User does not exist");
+   }
+   const courseList = [];
+   for (const course of user.userData.courses) {
+      courseList.push(await Course.getData(course));
+   }
+   return courseList;
+}
+
 User.statics.addCourse = async function(userId, courseId) {
    const user = await this.findById(userId).exec();
    if (!user) {
@@ -30,6 +43,8 @@ User.statics.addCourse = async function(userId, courseId) {
    if (!course) {
       throw Error("Course does not exist");
    }
+   course.studentCount++;
+   course.save();
    user.userData.courses.push(course._id);
    user.save((err, result) => {
       if (err) {
@@ -45,14 +60,17 @@ User.statics.removeCourse = async function(userId, courseId) {
    if (!user) {
       throw Error("User does not exist");
    }
-   if (!user.userData.courses.contains(courseId)) {
+   if (!user.userData.courses.includes(courseId)) {
       throw Error("User is not a member of the course");
    }
+   const course = await Course.findById(courseId).exec();
    user.userData.courses.splice(user.userData.courses.indexOf(courseId));
    user.save((err, result) => {
       if (err) {
          throw err;
       } else {
+         course.studentCount--;
+         course.save();
          return result.userData.courses;
       }
    });
@@ -63,7 +81,7 @@ User.statics.getData = async function(id) {
    if (!user) {
       throw Error("User does not exist");
    }
-   return user.userData;
+   return {firstName: user.firstName, lastName: user.lastName, ...user.userData};
 }
 
 // Static signup method

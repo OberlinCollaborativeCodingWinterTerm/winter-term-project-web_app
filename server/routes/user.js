@@ -7,7 +7,7 @@ const router=express.Router();
 const validateToken = require("../middleware/auth");
 
 //Controller functions
-const {signupUser, loginUser, getData} = require("../controllers/userController");
+const {signupUser, loginUser, getData, addCourse, removeCourse, courseList} = require("../controllers/userController");
 
 // Function is fired when the default parameter is the path
 
@@ -18,6 +18,9 @@ router.post("/login", loginUser)
 router.post("/register", signupUser)
 
 router.post("/data", validateToken, getData)
+router.post("/course/add", validateToken, addCourse)
+router.post("/course/remove", validateToken, removeCourse)
+router.post("/course/list", validateToken, courseList)
 
 module.exports = router;
 
