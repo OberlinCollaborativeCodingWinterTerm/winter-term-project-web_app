@@ -71,7 +71,7 @@ const ViewPost = ({post}) => {
     return (
         <div className='test'>
             <StudyGroupPost
-                user={post.user}
+                /*user={post.user}
                 course={post.course}
                 title={post.title}
                 description={post.description}
@@ -80,7 +80,7 @@ const ViewPost = ({post}) => {
                 date={post.date}
                 location={post.location}
                 members={post.members}
-                limit={5}
+                limit={5}*/
             />
         </div>
     );/*(

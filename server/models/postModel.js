@@ -33,7 +33,7 @@ const Post=new mongoose.Schema(
 )
 
 Post.statics.getPost = async function(id) {
-    const post = await this.findById(id).exec();
+    const post = await this.findById(id).populate("author").populate("course").populate("groupData.members").exec();
     if (!post) {
         throw Error("Post does not exist");
     }
@@ -54,7 +54,7 @@ Post.statics.getPosts = async function(courseId, userId, tags, flair) {
     if (flair) {
         query.flair = flair;
     }
-    const posts = await this.find(query).exec();
+    const posts = await this.find(query).populate("author").populate("course").populate("groupData.members").exec();
     if (!posts) {
         throw Error("Post with specified course id does not exist");
     }
@@ -63,12 +63,13 @@ Post.statics.getPosts = async function(courseId, userId, tags, flair) {
 
 Post.statics.createPost = async function(type, authorId, courseDepartment, courseNumber, title, description, tags, data) {
     if (!authorId || !courseDepartment || !courseNumber || !title || !description || !data) {
+        //console.log(authorId, courseDepartment, courseNumber, title, description, data);
         throw Error("All data fields must be filled");
     }
     if (type !== "announcement" && type !== "question" && type !== "group") {
         throw Error("Invalid post type");
     }
-    const course = await Course.findOne({department: courseDepartment, number: courseNumber}).exec();
+    const course = await Course.getData((await Course.getId({department: courseDepartment, number: courseNumber})));
     if (!course) {
         throw Error("Course does not exist");
     }

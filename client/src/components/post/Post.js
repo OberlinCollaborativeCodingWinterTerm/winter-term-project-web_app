@@ -38,22 +38,23 @@ export default class Post extends React.Component {
     }
 
     render() {
+        let data = this.props.postDetails;
         return (
             <>
-                <LinkContainer to={this.state.preview ? "/post/" + this.props.postId : ""}>
+                <LinkContainer to={this.state.preview ? "/post/" + data._id : ""}>
                     <Container className={this.state.preview ? "container-md bg-white my-4 p-4 shadow-sm rounded-4" : "container-md bg-white mt-5 p-4 shadow-sm rounded-4"}>
                         <p className={`mb-1 text-secondary d-flex align-items-start`}>
-                            <small className="me-auto d-flex align-items-center"><img alt="" src={this.props.user.icon} style={{ width: '1.5em', height: '1.5em' }} className="rounded-circle"  /> <span className="px-1"><Link to={`/users/${this.props.user.username}`} className="text-decoration-none link-secondary">{this.props.user.firstName + " " + this.props.user.lastName}</Link></span><Badge pill bg="student">{this.props.user.flair.toUpperCase()}</Badge>
-                            <span className="px-1">&middot; posted in <Link className="text-primary" to={"/courses/" + this.props.course}>{this.props.course}</Link></span></small>
+                            <small className="me-auto d-flex align-items-center"><img alt="" src={/* add user icon to db */ "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"} style={{ width: '1.5em', height: '1.5em' }} className="rounded-circle"  /> <span className="px-1"><Link to={`/users/${data.author._id}`} className="text-decoration-none link-secondary">{data.author.firstName + " " + data.author.lastName}</Link></span><Badge pill bg="student">{/* add flair per course */ "STUDENT"}</Badge>
+                            <span className="px-1">&middot; posted in <Link className="text-primary" to={"/courses/" + data.course._id}>{data.course.department + " " + data.course.number}</Link></span></small>
                             <this.iconDisplay className="text-quaternary" size="2em" />
                         </p>
                         <span className={`pe-5 ${this.state.preview ? "h3" : "h2"}`}>
-                            <span className={`me-2 ${this.state.grayed ? "text-tertiary" : ""}`}>{this.props.title}</span>
-                            {(this.props.flair != null) && <Badge pill bg={this.props.flair.toLowerCase()}>{this.props.flair.toUpperCase()}</Badge>}
+                            <span className={`me-2 ${this.state.grayed ? "text-tertiary" : ""}`}>{data.title}</span>
+                            {(data.flair != null) && <Badge pill bg={data.flair.toLowerCase()}>{data.flair.toUpperCase()}</Badge>}
                         </span>
-                        <p className={this.state.preview ? (this.state.grayed ? "text-tertiary" : "text-secondary") : "text-body"}>{this.props.description}</p>
+                        <p className={this.state.preview ? (this.state.grayed ? "text-tertiary" : "text-secondary") : "text-body"}>{data.description}</p>
                         <this.postContent {...this.props} />
-                        <div className="d-flex justify-content-md-end">{this.props.tags.map((tag) => <Link to="" key={tag}><Button style={{paddingRight: "0.75em", paddingLeft: "0.75em"}} className="mx-1 badge rounded-pill" variant="secondary">{tag}</Button></Link>)}</div>
+                        <div className="d-flex justify-content-md-end">{data.tags.map((tag) => <Link to="" key={tag}><Button style={{paddingRight: "0.75em", paddingLeft: "0.75em"}} className="mx-1 badge rounded-pill" variant="secondary">{tag}</Button></Link>)}</div>
                         {/* user, title, description, tags, like button is universal */
                          /* post content is what differentiates different types of posts */
                          /* feedback content is what is under the post, being comments, answers, group chat, etc. */}

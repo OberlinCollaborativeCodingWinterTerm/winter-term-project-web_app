@@ -3,6 +3,8 @@ import './posts.scss';
 import AnnouncementPost from "../post/types/AnnouncementPost";
 import QuestionPost from "../post/types/QuestionPost";
 import StudyGroupPost from "../post/types/StudyGroupPost";
+import {useData} from "../../hooks/useData";
+import {useEffect, useState} from "react";
 
 /*
 <AnnouncementPreviewPost
@@ -15,10 +17,19 @@ import StudyGroupPost from "../post/types/StudyGroupPost";
 
 */
 
-const Posts = () => {
+const Posts = (props) => {
+    const {getPostList} = useData();
+    const [posts, updatePosts] = useState([]);
+
+    useEffect(() => {
+        getPostList(props.filters ?? {}).then((posts) => {
+            updatePosts(posts);
+        });
+    }, []);
+
     // temporary array of "posts"
     // NOTE: "author" will not be defined here... use a table for user info based on userId
-    const posts = [
+    /*const posts = [
         {
             type: "question",
             id: 1,
@@ -130,7 +141,7 @@ const Posts = () => {
             limit: 6
         }
 
-    ]
+    ]*/
 
     return (
         <div className="posts">
@@ -138,7 +149,7 @@ const Posts = () => {
             <Container style={{ maxWidth: 750 }}>
                 {posts.map(post=>{
                     let PostType;
-                    switch (post.type) {
+                    switch (post.postType) {
                         case "question":
                             PostType = QuestionPost;
                             break;
@@ -151,18 +162,8 @@ const Posts = () => {
                             break;
                     }
                     return (<PostType
-                            user={post.user}
-                            course={post.course}
-                            title={post.title}
-                            description={post.desc}
-                            tags={["tag1", "tag2"]}
-                            flair={post.flair}
-                            key={post.id}
-                            postId={post.id}
-                            date={post.date}
-                            location={post.location}
-                            members={post.members}
-                            limit={post.limit}
+                            key={post._id}
+                            postDetails={post}
                             preview
                          />
                 )})}

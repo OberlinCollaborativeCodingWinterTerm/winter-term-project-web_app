@@ -13,9 +13,7 @@ const CourseFeed = (props) => {
     const [courseData, setCourseData] = useState({});
 
     useEffect(() => {
-        console.log(props.params.course)
         getCourseData(props.params.course).then((data) => {
-            console.log(data)
             setCourseData(data)
         })
     }, [])
@@ -35,7 +33,7 @@ const CourseFeed = (props) => {
                                 <h3 className="opacity-75 fw-normal">{courseData.department} {courseData.number}</h3>
                             </Container>
                         </Container>
-                        <Posts />
+                        <Posts filters={{courseId: props.params.course}} />
                         <FAButton tooltip="New Post"/>
                     </Col>
                 </div>

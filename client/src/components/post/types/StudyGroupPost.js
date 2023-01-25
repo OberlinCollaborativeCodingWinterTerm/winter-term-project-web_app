@@ -20,30 +20,32 @@ export default class StudyGroupPost extends Post {
     }
 
     postContent(props) {
+        let data = props.postDetails.groupData;
         return (
             <>
-                <span className={`${this.state.grayed ? "text-quaternary" : "text-tertiary"} d-flex align-items-center gap-1`}><IoMdCalendar size="1.25em" /><span>{props.date}</span><strong className="px-1">&middot;</strong><MdLocationOn size="1.25em" /><span>{props.location}</span></span>
+                <span className={`${this.state.grayed ? "text-quaternary" : "text-tertiary"} d-flex align-items-center gap-1`}><IoMdCalendar size="1.25em" /><span>{data.date}</span><strong className="px-1">&middot;</strong><MdLocationOn size="1.25em" /><span>{data.location}</span></span>
                 <this.GroupPreview {...props} />
             </>
         );
     }
 
     GroupPreview(props) {
+        let data = props.postDetails.groupData;
         return (
             <div className="d-flex align-items-center mt-3 mb-1" style={{ fontSize : "1.1em" }}>
                 <div className="d-flex me-3 align-items-center">
                     {
-                        props.members.map(user => {
+                        data.members.map(user => {
                             return (
-                                <img key={user.username} alt={user.username} src={user.icon} className="rounded-circle border-3 border-white me-n3" style={{ width: "1.75em", height: "1.75em", borderStyle: "solid" }} />
+                                <img key={user._id} alt={user.firstName + " " + user.lastName} src={"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"} className="rounded-circle border-3 border-white me-n3" style={{ width: "1.75em", height: "1.75em", borderStyle: "solid" }} />
                             )
                         })
                     }
                 </div>
-                <span className={`${this.state.grayed ? "text-quaternary" : "text-tertiary"} px-1`}>{props.members.length}/{props.limit} spots taken</span>
-                {(props.members.length < props.limit || this.state.joined) && <Button onClick={() => {
+                <span className={`${this.state.grayed ? "text-quaternary" : "text-tertiary"} px-1`}>{data.members.length}/{data.maximum} spots taken</span>
+                {(data.members.length < data.maximum || this.state.joined) && <Button onClick={() => {
                     if (!this.state.joined && !this.state.preview) {
-                        props.members.push({
+                        data.members.push({
                             icon: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
                             username: "username",
                             flair: "student"
