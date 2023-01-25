@@ -39,6 +39,7 @@ export default class Post extends React.Component {
 
     render() {
         let data = this.props.postDetails;
+        console.log(data);
         return (
             <>
                 <LinkContainer to={this.state.preview ? "/post/" + data._id : ""}>

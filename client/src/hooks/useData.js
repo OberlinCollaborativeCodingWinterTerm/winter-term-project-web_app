@@ -26,12 +26,13 @@ export const useData = () => {
         })).json();
     }
 
-    const getPostData = async(id) => {
-        return await (await fetch('http://localhost:5000/post/get', {
+    const getPostData = async(postId) => {
+        const data = (await fetch('http://localhost:5000/post/get', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({id, token})
-        })).json();
+            body: JSON.stringify({postId, token})
+        }))
+        return await data.json();
     }
 
     const getPostList = async(filters) => {

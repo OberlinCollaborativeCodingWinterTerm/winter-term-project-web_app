@@ -1,7 +1,10 @@
 import './viewpost.scss';
 import StudyGroupPost from "../../components/post/types/StudyGroupPost";
-import { Container } from 'react-bootstrap';
-import CommentSection from '../../components/commentsection/CommentSection';
+import QuestionPost from "../../components/post/types/QuestionPost";
+import AnnouncementPost from "../../components/post/types/AnnouncementPost";
+import {useData} from "../../hooks/useData";
+import {useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
 
 
 const testpost = {
@@ -67,11 +70,36 @@ const testpost = {
 
 
 
-const ViewPost = ({post}) => {
-    return (
+const ViewPost = (props) => {
+    const {getPostData} = useData();
+    const [post, setPost] = useState(null);
+    const [type, setType] = useState({type: AnnouncementPost});
+    const [ready, setReady] = useState(false);
+
+    useEffect(() => {
+        getPostData(props.params.id).then((obj) => {
+            setPost(obj)
+            setReady(true)
+            switch (obj.postType) {
+                case "question":
+                    setType({type: QuestionPost});
+                    break;
+                case "group":
+                    setType({type: StudyGroupPost});
+                    break;
+                case "announcement":
+                default:
+                    setType({type: AnnouncementPost});
+                    break;
+            }
+        })
+    }, [ready])
+
+    return (ready ? <type.type postDetails={post}/> : <></>)
+    /*return (
         <div className='test'>
             <StudyGroupPost
-                /*user={post.user}
+                user={post.user}
                 course={post.course}
                 title={post.title}
                 description={post.description}
@@ -80,10 +108,10 @@ const ViewPost = ({post}) => {
                 date={post.date}
                 location={post.location}
                 members={post.members}
-                limit={5}*/
+                limit={5}
             />
-        </div>
-    );/*(
+        </div>);*/
+    /*(
         <div className="viewpost">
             <div className="card">
                 <div className="post">
@@ -113,4 +141,4 @@ const ViewPost = ({post}) => {
     )*/
 }
 
-export {testpost, ViewPost};
+export default props => <ViewPost {...props} params={useParams()} />;

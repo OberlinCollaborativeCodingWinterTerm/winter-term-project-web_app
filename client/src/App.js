@@ -10,7 +10,7 @@ import Header from "./components/header/Header";
 // page imports
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
-import {testpost, ViewPost} from "./pages/viewpost/ViewPost";
+import ViewPost from "./pages/viewpost/ViewPost";
 import Courses from './pages/courses/Courses';
 //import Calendar from './components/calendar/calendar';
 import Home from './pages/home/Home';
@@ -30,7 +30,7 @@ function App() {
                 <Route path="" element={<Home />} />
                 {/* put routes for other pages under here */}
                 <Route path="filters" element={<FilterSidebar />} />
-                <Route path="post/:id" element={<ViewPost post={testpost}/>} />
+                <Route path="post/:id" element={<ViewPost />} />
                 <Route path='courses' element={<Courses />} />
                 <Route path="settings" element={<MyAccount />}/>
                 <Route path="courses/:course" element={<CourseFeed />} />
